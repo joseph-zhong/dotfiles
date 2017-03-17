@@ -26,3 +26,5 @@
 [user]
 	name = Joseph Zhong
 	email = joseph.zhong@hotmail.com
+[core]
+	editor = /usr/bin/vim
