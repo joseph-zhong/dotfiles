@@ -23,3 +23,6 @@
     added = yellow
     changed = green
     untracked = cyan
+[user]
+	name = Joseph Zhong
+	email = joseph.zhong@hotmail.com
