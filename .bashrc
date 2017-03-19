@@ -1,3 +1,13 @@
+# bashrc
+
+# enable git-prompt
+. ~/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+export PS1='\u@\h:\w (\[\e[32m\]${__git_ps1_branch_name}\[\e[0m\])\$ '
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -67,9 +77,13 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
+
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls -alCF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 if [ -f ~/.bash_aliases ]; then
@@ -118,49 +132,3 @@ cl() {
 	echo "'$1' not a dir..."
  fi
 }
-
-function transfer
-    if test (count $argv) -eq 0
-        echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
-        return 1
-    end
-
-    ## get temporarily filename, output is written to this file show progress can be showed
-    set tmpfile ( mktemp -t transferXXX )
-
-    ## upload stdin or file
-    set file $argv[1]
-
-    #if tty -s;
-    #then
-        set basefile (basename "$file" | sed -e 's/[^a-zA-Z0-9._-]/-/g')
-
-    #    if [ ! -e $file ];
-    #    then
-    #        echo "File $file doesn't exists."
-    #        return 1
-    #    fi
-
-        if test -d $file
-            # zip directory and transfer
-            set zipfile ( mktemp -t transferXXX.zip )
-            # echo (dirname $file)
-            #cd (dirname $file) and echo (pwd)
-            zip -r -q - $file >> $zipfile
-            curl --progress-bar --upload-file "$zipfile" "https://transfer.sh/$basefile.zip" >> $tmpfile
-            rm -f $zipfile
-        else
-            # transfer file
-            curl --progress-bar --upload-file "$file" "https://transfer.sh/$basefile" >> $tmpfile
-        end
-    #else
-    #    # transfer pipe
-    #    curl --progress-bar --upload-file "-" "https://transfer.sh/$file" >> $tmpfile
-    #fi
-
-    ## cat output link
-    cat $tmpfile
-
-    ## cleanup
-    rm -f $tmpfile
-end
