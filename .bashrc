@@ -48,7 +48,7 @@ fi
 
 # Get repo info
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[00;34m\]\w\[\033[00m\]$(__git_ps1 ": \[\033[01;92m\][%s]")\[\033[00m\] \$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[00;34m\]\w\[\033[00m\]$(__git_ps1 " \[\033[01;92m\][%s]")\[\033[00m\]\$ '
     PS2="> "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
