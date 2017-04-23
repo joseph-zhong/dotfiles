@@ -85,6 +85,9 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -alCF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias 446='cd ~/Dropbox/UW/CSE446'
+alias 473='cd ~/Dropbox/UW/CSE473'
+alias 599='cd ~/Dropbox/UW/CSE599'
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases

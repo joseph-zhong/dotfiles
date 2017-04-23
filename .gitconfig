@@ -28,3 +28,5 @@
 	email = joseph.zhong@hotmail.com
 [core]
 	editor = /usr/bin/vim
+[push]
+	default = simple
