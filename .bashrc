@@ -1,11 +1,20 @@
 # bashrc
 
-# enable git-prompt
-. ~/git-prompt.sh
-export GIT_PS1_SHOWDIRTYSTATE=1
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+fi
+
+if [[ $platform != 'linux' ]]; then 
+  # enable git-prompt
+  . ~/git-prompt.sh
+  export GIT_PS1_SHOWDIRTYSTATE=1
+  
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+      . $(brew --prefix)/etc/bash_completion
+  fi
 fi
 
 # If not running interactively, don't do anything
@@ -89,6 +98,14 @@ alias 446='cd ~/Dropbox/UW/CSE446'
 alias 473='cd ~/Dropbox/UW/CSE473'
 alias 599='cd ~/Dropbox/UW/CSE599'
 
+alias keylight='sudo node ~/.msi-klm/msi-keyboard-CLI.js'
+alias keylighton='keylight -t cool -l on'
+alias keylightoff='keylight -k off -l on'
+alias keylightunlock='keylight -k off -l off'
+alias keylightbreathe='keylight -m breathe'
+alias keylightnormal='keylight -m normal'
+alias keylightwave='keylight -m wave'
+
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -135,3 +152,5 @@ cl() {
 	echo "'$1' not a dir..."
  fi
 }
+export NVM_DIR="/home/josephz/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
