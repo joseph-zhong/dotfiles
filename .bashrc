@@ -1,21 +1,20 @@
 # bashrc
 
-
 platform='unknown'
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
    platform='linux'
 fi
 
-if [[ $platform != 'linux' ]]; then 
+# if [[ $platform != 'linux' ]]; then 
   # enable git-prompt
-  . ~/git-prompt.sh
-  export GIT_PS1_SHOWDIRTYSTATE=1
+#  . ~/git-prompt.sh
+#  export GIT_PS1_SHOWDIRTYSTATE=1
   
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-      . $(brew --prefix)/etc/bash_completion
-  fi
-fi
+#  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+#      . $(brew --prefix)/etc/bash_completion
+#  fi
+#fi
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return

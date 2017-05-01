@@ -1,6 +1,4 @@
 set runtimepath+=~/.vim_runtime
-set number
-set textwidth=80
 
 source ~/.vim_runtime/vimrcs/basic.vim
 source ~/.vim_runtime/vimrcs/filetypes.vim
