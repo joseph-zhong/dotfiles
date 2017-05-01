@@ -21,3 +21,5 @@ export LD_LIBRARY_PATH=$DYLD_LIBRARY_PATH
 export PATH=$DYLD_LIBRARY_PATH:$PATH
 export PATH=/usr/local/cuda/bin:$PATH
 
+# MySQL
+export PATH=$PATH:/usr/local/mysql/bin
