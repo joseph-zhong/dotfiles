@@ -7,7 +7,6 @@ if [[ "$unamestr" == 'Linux' ]]; then
 fi
 
 if [[ $platform != 'linux' ]]; then 
- 
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
       . $(brew --prefix)/etc/bash_completion
   fi
@@ -154,3 +153,7 @@ cl() {
 }
 export NVM_DIR="/home/josephz/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Torch install.
+. /home/josephz/torch/install/bin/torch-activate
+PATH="~/ws/git/src/bin:$PATH"
