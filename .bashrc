@@ -96,6 +96,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias 446='cd ~/Dropbox/UW/CSE446'
 alias 473='cd ~/Dropbox/UW/CSE473'
 alias 599='cd ~/Dropbox/UW/CSE599'
+alias DATA='cd /media/josephz/Data/'
 
 alias keylight='sudo node ~/.msi-klm/msi-keyboard-CLI.js'
 alias keylighton='keylight -t cool -l on'
@@ -156,4 +157,23 @@ export NVM_DIR="/home/josephz/.nvm"
 
 # Torch install.
 . /home/josephz/torch/install/bin/torch-activate
+
+# SRIO
 PATH="~/ws/git/src/bin:$PATH"
+
+# CUDA 
+export CUDA_HOME=/usr/local/cuda
+export DYLD_LIBRARY_PATH="/usr/local/cuda/lib64":$DYLD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$DYLD_LIBRARY_PATH
+export PATH=$DYLD_LIBRARY_PATH:$PATH
+export PATH=/usr/local/cuda/bin:$PATH
+
+# MySQL
+export PATH=$PATH:/usr/local/mysql/bin
+
+# Caffe
+export PYTHONPATH=$HOME/caffe/python:$PYTHONPATH
+
+# Local Bin
+export PATH="$PATH:/home/your_user/.local/bin"
+
