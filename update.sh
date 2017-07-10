@@ -14,6 +14,8 @@
 DOTFILES_DIR=`pwd`
 DOTFILES=$DOTFILES_DIR/.*
 
+sh ./.vim_runtime/install_awesome_vimrc.sh
+
 for dotfile in $DOTFILES
 do
     if [ $DOTFILES_DIR != $dotfile ] \
