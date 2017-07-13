@@ -34,4 +34,4 @@ do
     fi
 done
 
-sh ~/.vim_runtime/install_awesome_vimrc.sh
+sh ~/.vim_runtime/vimrc/install_awesome_vimrc.sh
