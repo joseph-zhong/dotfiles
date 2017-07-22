@@ -152,11 +152,13 @@ cl() {
 	echo "'$1' not a dir..."
  fi
 }
-export NVM_DIR="/home/josephz/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Loads NVM
+export NVM_DIR="~/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  
 
 # Torch install.
-. /home/josephz/torch/install/bin/torch-activate
+. ~/torch/install/bin/torch-activate
 
 # SRIO
 PATH="~/ws/git/src/bin:$PATH"
@@ -175,5 +177,5 @@ export PATH=$PATH:/usr/local/mysql/bin
 export PYTHONPATH=$HOME/caffe/python:$PYTHONPATH
 
 # Local Bin
-export PATH="$PATH:/home/your_user/.local/bin"
+export PATH="$PATH:~/.local/bin"
 
