@@ -153,15 +153,16 @@ cl() {
  fi
 }
 
+#####
+# Variables
+####
+
 # Loads NVM
 export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  
 
 # Torch install.
 . ~/torch/install/bin/torch-activate
-
-# SRIO
-PATH="~/ws/git/src/bin:$PATH"
 
 # CUDA 
 export CUDA_HOME=/usr/local/cuda
@@ -178,4 +179,15 @@ export PYTHONPATH=$HOME/caffe/python:$PYTHONPATH
 
 # Local Bin
 export PATH="$PATH:~/.local/bin"
+
+# SRIO
+PATH="~/ws/git/src/bin:$PATH"
+
+# Development Directories
+MLDIR=~/ws/git/src/common/ml/pymod/surroundio/ml
+MDIR=~/ws/git/src/common/ml/pymod/surroundio/ml/model
+DDIR=~/ws/git/src/common/ml/pymod/surroundio/ml/data
+
+
+
 
