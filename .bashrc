@@ -184,9 +184,10 @@ export PATH="$PATH:~/.local/bin"
 PATH="~/ws/git/src/bin:$PATH"
 
 # Development Directories
-MLDIR=~/ws/git/src/common/ml/pymod/surroundio/ml
-MDIR=~/ws/git/src/common/ml/pymod/surroundio/ml/model
-DDIR=~/ws/git/src/common/ml/pymod/surroundio/ml/data
+MLD=~/ws/git/src/common/ml/pymod/surroundio/ml
+MD=~/ws/git/src/common/ml/pymod/surroundio/ml/model
+DD=~/ws/git/src/common/ml/pymod/surroundio/ml/data
+TBD=~/ws/var/shared/shared/data/ml/tb
 
 
 
