@@ -98,14 +98,6 @@ alias 473='cd ~/Dropbox/UW/CSE473'
 alias 599='cd ~/Dropbox/UW/CSE599'
 alias DATA='cd /media/josephz/Data/'
 
-alias keylight='sudo node ~/.msi-klm/msi-keyboard-CLI.js'
-alias keylighton='keylight -t cool -l on'
-alias keylightoff='keylight -k off -l on'
-alias keylightunlock='keylight -k off -l off'
-alias keylightbreathe='keylight -m breathe'
-alias keylightnormal='keylight -m normal'
-alias keylightwave='keylight -m wave'
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
