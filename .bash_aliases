@@ -1,6 +1,5 @@
 # Bash Aliases 
 
-
 ####
 # Standard directories
 ####
@@ -21,13 +20,19 @@ alias p1='pushd ~/Papers > /dev/null'
 # Dotfiles directory.
 alias df1='pushd ~/dotfiles > /dev/null'
 
-# DATA directory.
-alias DATA='pushd /media/josephz/Data/ > /dev/null'
+if [[ `uname` == 'Linux' ]]; then
+  # DATA directory.
+  alias DATA='pushd /media/josephz/Data/ > /dev/null'
+fi
+
+# Dropbox directory.
+alias db1='pushd ~/Dropbox/ > /dev/null'
 
 ####
 # School Related
 ####
-alias CSE421='pushd ~/Dropbox/CSE421 > /dev/null'
-alias CSE461='pushd ~/Dropbox/CSE461 > /dev/null'
-
+alias UW='pushd  ~/Dropbox/ > /dev/null'
+alias GRAIL='pushd ~/Dropbox/UW/GRAIL > /dev/null'
+alias CSE421='pushd ~/Dropbox/UW/CSE421 > /dev/null'
+alias CSE461='pushd ~/Dropbox/UW/CSE461 > /dev/null'
 

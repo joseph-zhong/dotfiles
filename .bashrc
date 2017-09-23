@@ -1,33 +1,13 @@
 # bashrc
 
-platform='unknown'
-unamestr=`uname`
-if [[ "$unamestr" == 'Linux' ]]; then
-   platform='linux'
-fi
-
-if [[ $platform != 'linux' ]]; then 
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-      . $(brew --prefix)/etc/bash_completion
-  fi
-fi
-
-# enable git-prompt
+####
+# Git Prompt.
+####
 source ~/.bash_git
 export GIT_PS1_SHOWDIRTYSTATE=1
 
-# If not running interactively, don't do anything
+# If not running interactively, don't do anything.
 [ -z "$PS1" ] && return
-
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-HISTSIZE=1000
-HISTFILESIZE=2000
-
-shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -84,11 +64,10 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
 
-export HISTSIZE=10000
-export HISTFILESIZE=10000
-
+####
+# Aliases
+####
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -alCF'
@@ -97,9 +76,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+
+####
+# Bash completion 
+####
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -107,49 +87,34 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# some usefull functions
-extract () {
-  if [ -f $1 ] ; then
-      case $1 in
-          *.tar.bz2)   tar xvjf $1    ;;
-          *.tar.gz)    tar xvzf $1    ;;
-          *.bz2)       bunzip2 $1     ;;
-          *.rar)       rar x $1       ;;
-          *.gz)        gunzip $1      ;;
-          *.tar)       tar xvf $1     ;;
-          *.tbz2)      tar xvjf $1    ;;
-          *.tgz)       tar xvzf $1    ;;
-          *.zip)       unzip $1       ;;
-          *.Z)         uncompress $1  ;;
-          *.7z)        7z x $1        ;;
-          *)           echo "don't know how to extract '$1'..." ;;
-      esac
-  else
-      echo "'$1' is not a valid file!"
+if [[ `uname` == 'Darwin' ]]; then 
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+      . $(brew --prefix)/etc/bash_completion
   fi
-}
+fi
 
-# Runs a ls immediately when you're inside a file. 
-cl() {
- if [ -d $1 ] ; then
-	cd $1
-	ls 
- else
-	echo "'$1' not a dir..."
- fi
-}
 
 #####
 # Variables
 ####
+
+# History
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+shopt -s checkwinsize
 
 # Loads NVM
 export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  
 
 # Torch install.
-. ~/torch/install/bin/torch-activate
+if [ -d ~/torch ]; then 
+  source ~/torch/install/bin/torch-activate
+fi
 
 # CUDA 
 export CUDA_HOME=/usr/local/cuda
@@ -176,9 +141,7 @@ MD=~/ws/git/src/common/ml/pymod/surroundio/ml/model
 DD=~/ws/git/src/common/ml/pymod/surroundio/ml/data
 TBD=~/ws/var/shared/shared/data/ml/tb
 
-# Papers Directory
+# School Related Directories
 PAPERS=~/Papers
 DOTFILES=~/dotfiles
-
-
 
