@@ -39,3 +39,5 @@ alias CSE421='pushd ~/Dropbox/UW/CSE421 > /dev/null'
 alias CSE461='pushd ~/Dropbox/UW/CSE461 > /dev/null'
 alias CS224N='pushd ~/Dropbox/Stanford/CS224N > /dev/null'
 
+alias CSE473='pushd ~/Dropbox/UW/TA/CSE473 > /dev/null'
+
