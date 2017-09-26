@@ -29,7 +29,7 @@ do
     fi
 done
 
-git clone https://github.com/amix/vimrc.git ~/.vim_runtime
+git clone https://github.com/joseph-zhong/vimrc.git ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
 
 printf 'creating symblink for my_configs.vim\n'
