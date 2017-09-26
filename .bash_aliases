@@ -3,16 +3,16 @@
 ####
 # Standard directories
 ####
-alias e1='pushd ~/ws/git/src > /dev/null'
-alias s1='pushd ~/ws/git/src/common/ml/scripts > /dev/null'
-alias md1='pushd ~/ws/git/src/common/ml/pymod/surroundio/model > /dev/null'
-alias dd1='pushd ~/ws/git/src/common/ml/pymod/surroundio/data > /dev/null'
+alias e1='pushd $WSD/git/src > /dev/null'
+alias s1='pushd $WSD/git/src/common/ml/scripts > /dev/null'
+alias md1='pushd $WSD/git/src/common/ml/pymod/surroundio/model > /dev/null'
+alias dd1='pushd $WSD/git/src/common/ml/pymod/surroundio/data > /dev/null'
 
-alias tb1='pushd ~/ws/var/shared/shared/data/ml/tb > /dev/null'
-alias d1='pushd ~/ws/var/shared/shared/data/ml/datasets > /dev/null'
-alias r1='pushd ~/ws/var/shared/shared/data/ml/raw > /dev/null'
-alias w1='pushd ~/ws/var/shared/shared/data/ml/weights > /dev/null'
-alias m1='pushd ~/ws/var/shared/shared/data/ml/models > /dev/null'
+alias tb1='pushd $WSD/var/shared/shared/data/ml/tb > /dev/null'
+alias d1='pushd $WSD/var/shared/shared/data/ml/datasets > /dev/null'
+alias r1='pushd $WSD/var/shared/shared/data/ml/raw > /dev/null'
+alias w1='pushd $WSD/var/shared/shared/data/ml/weights > /dev/null'
+alias m1='pushd $WSD/var/shared/shared/data/ml/models > /dev/null'
 
 # Papers directory.
 alias p1='pushd ~/Papers > /dev/null'

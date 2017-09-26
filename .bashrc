@@ -133,13 +133,18 @@ export PYTHONPATH=$HOME/caffe/python:$PYTHONPATH
 export PATH="$PATH:~/.local/bin"
 
 # SRIO
-PATH="~/ws/git/src/bin:$PATH"
+if [[ `uname` == 'Linux' ]]; then
+  WSD=~/ws
+else
+  WSD=~/Development/Work/Surround/ws
+fi
+PATH=$WSD/git/src/bin:$PATH
 
 # Development Directories
-MLD=~/ws/git/src/common/ml/pymod/surroundio/ml
-MD=~/ws/git/src/common/ml/pymod/surroundio/ml/model
-DD=~/ws/git/src/common/ml/pymod/surroundio/ml/data
-TBD=~/ws/var/shared/shared/data/ml/tb
+MLD=$WSD/git/src/common/ml/pymod/surroundio/ml
+MD=$WSD/git/src/common/ml/pymod/surroundio/ml/model
+DD=$WSD/git/src/common/ml/pymod/surroundio/ml/data
+TBD=$WSD/var/shared/shared/data/ml/tb
 
 # School Related Directories
 PAPERS=~/Papers
