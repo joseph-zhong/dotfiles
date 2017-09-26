@@ -5,8 +5,8 @@
 ####
 alias e1='pushd $WSD/git/src > /dev/null'
 alias s1='pushd $WSD/git/src/common/ml/scripts > /dev/null'
-alias md1='pushd $WSD/git/src/common/ml/pymod/surroundio/model > /dev/null'
-alias dd1='pushd $WSD/git/src/common/ml/pymod/surroundio/data > /dev/null'
+alias md1='pushd $WSD/git/src/common/ml/pymod/surroundio/ml/model > /dev/null'
+alias dd1='pushd $WSD/git/src/common/ml/pymod/surroundio/ml/data > /dev/null'
 
 alias tb1='pushd $WSD/var/shared/shared/data/ml/tb > /dev/null'
 alias d1='pushd $WSD/var/shared/shared/data/ml/datasets > /dev/null'
