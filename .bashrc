@@ -149,4 +149,5 @@ TBD=$WSD/var/shared/shared/data/ml/tb
 # School Related Directories
 PAPERS=~/Papers
 DOTFILES=~/dotfiles
+CSE473=/cse/web/courses/cse473/17au
 
