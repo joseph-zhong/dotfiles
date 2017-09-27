@@ -35,13 +35,24 @@ alias db1='pushd ~/Dropbox/ > /dev/null'
 ####
 # School Related
 ####
-alias UW='pushd  ~/Dropbox/UW > /dev/null'
-alias Stanford='pushd  ~/Dropbox/Stanford > /dev/null'
-alias CMU='pushd  ~/Dropbox/CMU > /dev/null'
-alias GRAIL='pushd ~/Dropbox/UW/GRAIL > /dev/null'
+alias UW='pushd ~/Dropbox/UW > /dev/null'
+alias Stanford='pushd ~/Dropbox/Stanford > /dev/null'
+alias CMU='pushd ~/Dropbox/CMU > /dev/null'
 alias CSE421='pushd ~/Dropbox/UW/CSE421 > /dev/null'
 alias CSE461='pushd ~/Dropbox/UW/CSE461 > /dev/null'
 alias CS224N='pushd ~/Dropbox/Stanford/CS224N > /dev/null'
 
-alias CSE473='pushd ~/Dropbox/UW/TA/CSE473 > /dev/null'
+### TA.
+if [[ `hostname` == 'attu'* ]]; then
+  alias CSE473='pushd /cse/web/courses/cse473/17au > /dev/null'
+else
+  alias CSE473='pushd ~/Dropbox/UW/TA/CSE473 > /dev/null'
+fi
+
+### GRAIL.
+if [[ `hostname` == 'flatwhite'* ]]; then
+  alias g1='pushd ~/GRAIL > /dev/null'
+else
+  alias g1='pushd $DEVD/UW/GRAIL > /dev/null'
+fi
 

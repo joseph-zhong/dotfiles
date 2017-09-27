@@ -136,7 +136,8 @@ export PATH="$PATH:~/.local/bin"
 if [[ `uname` == 'Linux' ]]; then
   WSD=~/ws
 else
-  WSD=~/Development/Work/Surround/ws
+  DEVD=~/Development
+  WSD=$DEVD/Work/Surround/ws
 fi
 PATH=$WSD/git/src/bin:$PATH
 
