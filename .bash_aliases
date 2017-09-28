@@ -52,7 +52,10 @@ fi
 ### GRAIL.
 if [[ `hostname` == 'flatwhite'* ]]; then
   alias GRAIL='pushd ~/GRAIL > /dev/null'
+  alias InteractiveModel='pushd ~/GRAIL/InteractiveModel > /dev/null'
 else
   alias GRAIL='pushd $DEVD/UW/GRAIL > /dev/null'
+  alias InteractiveModel='pushd $DEVD/GRAIL/InteractiveModel > /dev/null'
 fi
+
 
