@@ -61,5 +61,6 @@ else
   alias im2='pushd $DEVD/GRAIL/InteractiveModel2 > /dev/null'
   alias im3='pushd $DEVD/GRAIL/InteractiveModelnb > /dev/null'
 fi
+alias activate='source bin/activate'
 
 
