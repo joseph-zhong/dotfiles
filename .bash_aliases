@@ -57,9 +57,9 @@ if [[ `hostname` == 'flatwhite'* ]]; then
   alias im3='pushd ~/GRAIL/InteractiveModelnb > /dev/null'
 else
   alias GRAIL='pushd $DEVD/UW/GRAIL > /dev/null'
-  alias im1='pushd $DEVD/GRAIL/UW/InteractiveModel > /dev/null'
-  alias im2='pushd $DEVD/GRAIL/UW/InteractiveModel2 > /dev/null'
-  alias im3='pushd $DEVD/GRAIL/UW/InteractiveModelnb > /dev/null'
+  alias im1='pushd $DEVD/UW/GRAIL/InteractiveModel > /dev/null'
+  alias im2='pushd $DEVD/UW/GRAIL/InteractiveModel2 > /dev/null'
+  alias im3='pushd $DEVD/UW/GRAIL/InteractiveModelnb > /dev/null'
 fi
 alias activate='source bin/activate'
 
