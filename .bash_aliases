@@ -53,17 +53,17 @@ else
 fi
 
 ### GRAIL.
-if [ `hostname` == 'flatwhite'* ] \
-  || [ `hostname` == 'holland'* ] \
-  || [ `hostname` == 'keech'* ] \
-  || [ `hostname` == 'roberts'* ] \
-  || [ `hostname` == 'robson'* ] \
-  || [ `hostname` == 'arusha'* ] \
-  || [ `hostname` == 'grande'* ] \
-  || [ `hostname` == 'arnold'* ] \
-  || [ `hostname` == 'breve'* ] \
-  || [ `hostname` == 'parsons'* ] \
-  || [ `hostname` == 'schneider'* ]; then
+if [[ `hostname` == 'flatwhite'* ]] \
+  || [[ `hostname` == 'holland'* ]] \
+  || [[ `hostname` == 'keech'* ]] \
+  || [[ `hostname` == 'roberts'* ]] \
+  || [[ `hostname` == 'robson'* ]] \
+  || [[ `hostname` == 'arusha'* ]] \
+  || [[ `hostname` == 'grande'* ]] \
+  || [[ `hostname` == 'arnold'* ]] \
+  || [[ `hostname` == 'breve'* ]] \
+  || [[ `hostname` == 'parsons'* ]] \
+  || [[ `hostname` == 'schneider'* ]]; then
   alias GRAIL='pushd ~/GRAIL > /dev/null'
   alias im1='pushd ~/GRAIL/InteractiveModel > /dev/null'
   alias im2='pushd ~/GRAIL/InteractiveModel-Exp > /dev/null'
