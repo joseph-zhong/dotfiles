@@ -61,6 +61,8 @@ else
   alias im2='pushd $DEVD/UW/GRAIL/InteractiveModel-Exp > /dev/null'
   alias im3='pushd $DEVD/UW/GRAIL/InteractiveModelnb > /dev/null'
 fi
-alias activate='source bin/activate'
+alias speech2='pushd ~/GRAIL/InteractiveModel/ml/speech2 > /dev/null'
+alias archive='pushd ~/GRAIL/InteractiveModel/archive > /dev/null'
+alias activate='source ~/GRAIL/bin/activate'
 
 
