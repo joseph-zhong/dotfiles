@@ -37,10 +37,13 @@ alias db1='pushd ~/Dropbox/ > /dev/null'
 ####
 alias UW='pushd ~/Dropbox/UW > /dev/null'
 alias Stanford='pushd ~/Dropbox/Stanford > /dev/null'
+alias CS224N='pushd ~/Dropbox/Stanford/CS224N > /dev/null'
 alias CMU='pushd ~/Dropbox/CMU > /dev/null'
 alias CSE421='pushd ~/Dropbox/UW/CSE421 > /dev/null'
+
+### CSE461.
 alias CSE461='pushd ~/Dropbox/UW/CSE461 > /dev/null'
-alias CS224N='pushd ~/Dropbox/Stanford/CS224N > /dev/null'
+alias CSE461B='pushd ~/Dropbox/UW/CSE461/projects/0_NetworkProgrammingUDP/feng-zhong-proj0/B > /dev/null'
 
 ### TA.
 if [[ `hostname` == 'attu'* ]]; then
