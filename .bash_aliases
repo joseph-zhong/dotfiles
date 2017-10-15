@@ -76,6 +76,6 @@ else
 fi
 alias speech2='pushd ~/GRAIL/InteractiveModel/ml/speech2 > /dev/null'
 alias archive='pushd ~/GRAIL/InteractiveModel/archive > /dev/null'
-alias activate='source ~/GRAIL/bin/activate'
+alias activate='source ~/GRAIL/InteractiveModel/bin/activate'
 
 
