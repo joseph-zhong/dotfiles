@@ -131,6 +131,7 @@ export PYTHONPATH=$HOME/caffe/python:$PYTHONPATH
 
 # Local Bin
 export PATH="$PATH:~/.local/bin"
+export PATH=$HOME/local/bin:$PATH
 
 # SRIO
 if [[ `uname` == 'Linux' ]]; then
