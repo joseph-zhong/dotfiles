@@ -108,8 +108,12 @@ shopt -s histappend
 shopt -s checkwinsize
 
 # Loads NVM
-export NVM_DIR="~/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  
+export NVM_DIR=~/.nvm
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Yarn
+export PATH="$HOME/.yarn/bin:$PATH"
 
 # Torch install.
 if [ -d ~/torch ]; then 
@@ -148,8 +152,30 @@ MD=$WSD/git/src/common/ml/pymod/surroundio/ml/model
 DD=$WSD/git/src/common/ml/pymod/surroundio/ml/data
 TBD=$WSD/var/shared/shared/data/ml/tb
 
-# School Related Directories
 PAPERS=~/Papers
 DOTFILES=~/dotfiles
+
+### CSE473.
 CSE473=/cse/web/courses/cse473/17au
+
+### GRAIL.
+if [[ `hostname` == 'flatwhite'* ]] \
+  || [[ `hostname` == 'holland'* ]] \
+  || [[ `hostname` == 'keech'* ]] \
+  || [[ `hostname` == 'roberts'* ]] \
+  || [[ `hostname` == 'robson'* ]] \
+  || [[ `hostname` == 'arusha'* ]] \
+  || [[ `hostname` == 'grande'* ]] \
+  || [[ `hostname` == 'arnold'* ]] \
+  || [[ `hostname` == 'breve'* ]] \
+  || [[ `hostname` == 'parsons'* ]] \
+  || [[ `hostname` == 'schneider'* ]]; then
+  GRAIL=~/GRAIL
+  IM1=$GRAIL/InteractiveModel
+  IM2=$GRAIL/InteractiveModelnb
+else
+  GRAIL=$DEVD/UW/GRAIL
+  IM1=$GRAIL/InteractiveModel
+  IM2=$GRAIL/InteractiveModelnb
+fi
 

@@ -53,29 +53,11 @@ else
 fi
 
 ### GRAIL.
-if [[ `hostname` == 'flatwhite'* ]] \
-  || [[ `hostname` == 'holland'* ]] \
-  || [[ `hostname` == 'keech'* ]] \
-  || [[ `hostname` == 'roberts'* ]] \
-  || [[ `hostname` == 'robson'* ]] \
-  || [[ `hostname` == 'arusha'* ]] \
-  || [[ `hostname` == 'grande'* ]] \
-  || [[ `hostname` == 'arnold'* ]] \
-  || [[ `hostname` == 'breve'* ]] \
-  || [[ `hostname` == 'parsons'* ]] \
-  || [[ `hostname` == 'schneider'* ]]; then
-  alias GRAIL='pushd ~/GRAIL > /dev/null'
-  alias im1='pushd ~/GRAIL/InteractiveModel > /dev/null'
-  alias im2='pushd ~/GRAIL/InteractiveModel-Exp > /dev/null'
-  alias im3='pushd ~/GRAIL/InteractiveModelnb > /dev/null'
-else
-  alias GRAIL='pushd $DEVD/UW/GRAIL > /dev/null'
-  alias im1='pushd $DEVD/UW/GRAIL/InteractiveModel > /dev/null'
-  alias im2='pushd $DEVD/UW/GRAIL/InteractiveModel-Exp > /dev/null'
-  alias im3='pushd $DEVD/UW/GRAIL/InteractiveModelnb > /dev/null'
-fi
-alias speech2='pushd ~/GRAIL/InteractiveModel/ml/speech2 > /dev/null'
-alias archive='pushd ~/GRAIL/InteractiveModel/archive > /dev/null'
-alias activate='source ~/GRAIL/InteractiveModel/bin/activate'
-
+alias GRAIL='pushd $GRAIL > /dev/null'
+alias im1='pushd $IM1 > /dev/null'
+alias im2='pushd $GRAIL/InteractiveModel-Exp > /dev/null'
+alias im3='pushd $IM2 > /dev/null'
+alias speech2='pushd $IM1/ml/speech2 > /dev/null'
+alias archive='pushd $IM1/archive > /dev/null'
+alias activate='source $IM1/bin/activate'
 
