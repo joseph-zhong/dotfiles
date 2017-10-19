@@ -45,12 +45,8 @@ alias CSE421='pushd ~/Dropbox/UW/CSE421 > /dev/null'
 alias CSE461='pushd ~/Dropbox/UW/CSE461 > /dev/null'
 alias CSE461B='pushd ~/Dropbox/UW/CSE461/projects/0_NetworkProgrammingUDP/feng-zhong-proj0/B > /dev/null'
 
-### TA.
-if [[ `hostname` == 'attu'* ]]; then
-  alias CSE473='pushd /cse/web/courses/cse473/17au > /dev/null'
-else
-  alias CSE473='pushd ~/Dropbox/UW/TA/CSE473 > /dev/null'
-fi
+### CSE473 TA.
+alias CSE473='pushd $CSE473 > /dev/null'
 
 ### GRAIL.
 alias GRAIL='pushd $GRAIL > /dev/null'

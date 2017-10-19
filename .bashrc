@@ -156,7 +156,11 @@ PAPERS=~/Papers
 DOTFILES=~/dotfiles
 
 ### CSE473.
-CSE473=/cse/web/courses/cse473/17au
+if [[ `hostname` == *'.cs.washington.edu' ]]; then
+  CSE473=/cse/web/courses/cse473/17au
+else
+  CSE473=~/Dropbox/UW/TA/CSE473
+fi 
 
 ### GRAIL.
 if [[ `hostname` == 'flatwhite'* ]] \
@@ -178,4 +182,7 @@ else
   IM1=$GRAIL/InteractiveModel
   IM2=$GRAIL/InteractiveModelnb
 fi
+IM_DIR=$IM1
+IM2_DIR=$IM2
+export PYTHONPATH="${PYTHONPATH}:${IM1}"
 
