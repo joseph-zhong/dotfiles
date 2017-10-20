@@ -144,16 +144,16 @@ else
   DEVD=~/Development
   WSD=$DEVD/Work/Surround/ws
 fi
-PATH=$WSD/git/src/bin:$PATH
+export PATH=$WSD/git/src/bin:$PATH
 
 # Development Directories
-MLD=$WSD/git/src/common/ml/pymod/surroundio/ml
-MD=$WSD/git/src/common/ml/pymod/surroundio/ml/model
-DD=$WSD/git/src/common/ml/pymod/surroundio/ml/data
-TBD=$WSD/var/shared/shared/data/ml/tb
-
-PAPERS=~/Papers
-DOTFILES=~/dotfiles
+export MLD=$WSD/git/src/common/ml/pymod/surroundio/ml
+export MD=$WSD/git/src/common/ml/pymod/surroundio/ml/model
+export DD=$WSD/git/src/common/ml/pymod/surroundio/ml/data
+export TBD=$WSD/var/shared/shared/data/ml/tb
+ 
+export PAPERS=~/Papers
+export DOTFILES=~/dotfiles
 
 ### CSE473.
 if [[ `hostname` == *'.cs.washington.edu' ]]; then
@@ -182,7 +182,7 @@ else
   IM1=$GRAIL/InteractiveModel
   IM2=$GRAIL/InteractiveModelnb
 fi
-IM_DIR=$IM1
-IM2_DIR=$IM2
+export IM_DIR=$IM1
+export IM2_DIR=$IM2
 export PYTHONPATH="${PYTHONPATH}:${IM1}"
 
