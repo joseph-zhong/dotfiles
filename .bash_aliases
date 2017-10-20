@@ -53,7 +53,7 @@ alias GRAIL='pushd $GRAIL > /dev/null'
 alias im1='pushd $IM1 > /dev/null'
 alias im2='pushd $GRAIL/InteractiveModel-Exp > /dev/null'
 alias im3='pushd $IM2 > /dev/null'
-alias speech2='pushd $IM1/ml/scripts/speech2 > /dev/null'
+alias speech2='pushd $IM1/ml/model/speech2 > /dev/null'
 alias archive='pushd $IM1/archive > /dev/null'
 alias activate='source $IM1/bin/activate'
 
