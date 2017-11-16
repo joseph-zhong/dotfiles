@@ -157,7 +157,9 @@ export DOTFILES=~/dotfiles
 
 ### CSE473.
 if [[ `hostname` == *'.cs.washington.edu' ]]; then
-  CSE473=/cse/web/courses/cse473/17au
+  CSE=/cse/web/
+  CSE473=$CSE/courses/cse473/17au
+  JOSEPHZ=$CSE/homes/josephz
 else
   CSE473=~/Dropbox/UW/TA/CSE473
 fi 

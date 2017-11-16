@@ -35,6 +35,7 @@ alias db1='pushd ~/Dropbox/ > /dev/null'
 ####
 # School Related
 ####
+alias JOSEPHZ='pushd $JOSEPHZ > /dev/null'
 alias UW='pushd ~/Dropbox/UW > /dev/null'
 alias Stanford='pushd ~/Dropbox/Stanford > /dev/null'
 alias CS224N='pushd ~/Dropbox/Stanford/CS224N > /dev/null'
