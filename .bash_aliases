@@ -33,6 +33,11 @@ fi
 alias db1='pushd ~/Dropbox/ > /dev/null'
 
 ####
+# Misc
+####
+alias a1='source bin/activate'
+
+####
 # School Related
 ####
 alias JOSEPHZ='pushd $JOSEPHZ > /dev/null'
