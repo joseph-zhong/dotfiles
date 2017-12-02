@@ -1,12 +1,15 @@
 # Bash Aliases 
 
 ####
-# Standard directories
+# Standard Xevo directories
 ####
 alias e1='pushd $WSD/git/src > /dev/null'
 alias s1='pushd $WSD/git/src/common/ml/scripts > /dev/null'
 alias md1='pushd $WSD/git/src/common/ml/pymod/xevo/ml/model > /dev/null'
 alias dd1='pushd $WSD/git/src/common/ml/pymod/xevo/ml/data > /dev/null'
+
+alias ja1='pushd $WSD/git/personal/josephz > /dev/null'
+alias aa1='source $WSD/git/personal/josephz/openface/bin/activate'
 
 alias tb1='pushd $WSD/var/shared/shared/data/ml/tb > /dev/null'
 alias d1='pushd $WSD/var/shared/shared/data/ml/datasets > /dev/null'
