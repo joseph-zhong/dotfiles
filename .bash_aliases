@@ -35,7 +35,8 @@ alias db1='pushd ~/Dropbox/ > /dev/null'
 ####
 # Misc
 ####
-alias a1='source bin/activate'
+alias activate='source bin/activate'
+
 
 ####
 # School Related
@@ -59,16 +60,22 @@ alias GRAIL='pushd $GRAIL > /dev/null'
 alias im1='pushd $IM1 > /dev/null'
 alias im2='pushd $GRAIL/InteractiveModel-Exp > /dev/null'
 alias im3='pushd $IM2 > /dev/null'
+
 alias speech2='pushd $IM1/ml/model/speech2 > /dev/null'
 alias archive='pushd $IM1/archive > /dev/null'
 alias scripts='pushd $IM1/ml/scripts > /dev/null'
 alias infra='pushd $IM1/infra > /dev/null'
+
 alias personal='pushd $IM1/personal > /dev/null'
 alias demo='pushd $IMD1/personal/demo > /dev/null'
 alias web='pushd $IM1/personal/demo/web > /dev/null'
-alias activate='source $IM_DIR_VIRTUALENV/bin/activate'
+alias deepspeech='pushd $IM1/personal/externals/DeepSpeech > /dev/null'
+
 alias supasorn1='pushd $IM2/supasorn/ > /dev/null'
 alias supasorn2='pushd $IM2/supasorn2/ > /dev/null'
 alias supasorn3='pushd $IM2/supasorn2nb/ > /dev/null'
+
+alias ab1='source $IM_DIR_VIRTUALENV/bin/activate'
+alias ab2='source $IM_DIR/personal/infra/virtualenv/mozilla-deepspeech/bin/activate'
 
 
