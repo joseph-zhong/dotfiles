@@ -117,7 +117,8 @@ export PATH="$HOME/.yarn/bin:$PATH"
 
 # Torch install.
 if [ -d ~/torch ]; then 
-  source ~/torch/install/bin/torch-activate
+  export PATH="~torch/install/bin:$PATH"
+  . /home/josephz/torch/install/bin/torch-activate
 fi
 
 # CUDA 
@@ -184,4 +185,6 @@ fi
 export IM_DIR=$IM1
 export IM2_DIR=$IM2
 export PYTHONPATH="${PYTHONPATH}:${IM1}"
+
+
 
