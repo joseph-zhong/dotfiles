@@ -72,7 +72,7 @@ alias infra='pushd $IM1/infra > /dev/null'
 alias personal='pushd $IM1/personal > /dev/null'
 alias demo='pushd $IMD1/personal/demo > /dev/null'
 alias web='pushd $IM1/personal/demo/web > /dev/null'
-alias deepspeech='pushd $IM1/personal/externals/DeepSpeech > /dev/null'
+alias ds1='pushd $IM1/personal/externals/DeepSpeech > /dev/null'
 
 alias supasorn1='pushd $IM2/supasorn/ > /dev/null'
 alias supasorn2='pushd $IM2/supasorn2/ > /dev/null'
