@@ -117,7 +117,8 @@ export PATH="$HOME/.yarn/bin:$PATH"
 
 # Torch install.
 if [ -d ~/torch ]; then 
-  source ~/torch/install/bin/torch-activate
+  export PATH="~torch/install/bin:$PATH"
+  . /home/josephz/torch/install/bin/torch-activate
 fi
 
 # CUDA 
@@ -157,7 +158,9 @@ export DOTFILES=~/dotfiles
 
 ### CSE473.
 if [[ `hostname` == *'.cs.washington.edu' ]]; then
-  CSE473=/cse/web/courses/cse473/17au
+  CSE=/cse/web/
+  CSE473=$CSE/courses/cse473/17au
+  JOSEPHZ=$CSE/homes/josephz
 else
   CSE473=~/Dropbox/UW/TA/CSE473
 fi 
@@ -183,5 +186,11 @@ else
 fi
 export IM_DIR=$IM1
 export IM2_DIR=$IM2
+export IM_DIR_TF_VERSION=tf-0.11.0
+export IM_DIR_VIRTUALENV=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION}
 export PYTHONPATH="${PYTHONPATH}:${IM1}"
+export PATH="${PATH}:$IM_DIR/archive/bin"
+
+
+
 
