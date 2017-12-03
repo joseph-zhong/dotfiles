@@ -44,6 +44,7 @@ alias CSE421='pushd ~/Dropbox/UW/CSE421 > /dev/null'
 ### CSE461.
 alias CSE461='pushd ~/Dropbox/UW/CSE461 > /dev/null'
 alias proj2='pushd ~/Dropbox/UW/CSE461/projects/2_Proxy/projProxy  > /dev/null'
+alias proj3='pushd ~/Dropbox/UW/CSE461/projects/3_Tor61/projTor61  > /dev/null'
 
 ### CSE473 TA.
 alias CSE473='pushd $CSE473 > /dev/null'
