@@ -83,4 +83,11 @@ alias supasorn3='pushd $IM2/supasorn2nb/ > /dev/null'
 alias ab1='source $IM_DIR_VIRTUALENV/bin/activate'
 alias ab2='source $IM_DIR/personal/infra/virtualenv/mozilla-deepspeech/bin/activate'
 
+### Secret Stuffs.
+if [[ -d ".private_aliases" ]]; then
+  for fname in .private_aliases/*; do
+    echo 'sourcing' $fname
+    source $fname
+  done
+fi
 
