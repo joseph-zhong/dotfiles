@@ -86,7 +86,6 @@ alias ab2='source $IM_DIR/personal/infra/virtualenv/mozilla-deepspeech/bin/activ
 ### Secret Stuffs.
 if [[ -d ".private_aliases" ]]; then
   for fname in .private_aliases/*; do
-    echo 'sourcing' $fname
     source $fname
   done
 fi
