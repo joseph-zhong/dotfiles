@@ -53,6 +53,7 @@ alias CSE421='pushd ~/Dropbox/UW/CSE421 > /dev/null'
 
 ### CSE461.
 alias CSE461='pushd ~/Dropbox/UW/CSE461 > /dev/null'
+alias proj1='pushd ~/Dropbox/UW/CSE461/projects/  > /dev/null'
 alias proj2='pushd ~/Dropbox/UW/CSE461/projects/2_Proxy/projProxy  > /dev/null'
 alias proj3='pushd ~/Dropbox/UW/CSE461/projects/3_Tor61/projTor61  > /dev/null'
 
@@ -82,4 +83,10 @@ alias supasorn3='pushd $IM2/supasorn2nb/ > /dev/null'
 alias ab1='source $IM_DIR_VIRTUALENV/bin/activate'
 alias ab2='source $IM_DIR/personal/infra/virtualenv/mozilla-deepspeech/bin/activate'
 
+### Secret Stuffs.
+if [[ -d ".private_aliases" ]]; then
+  for fname in .private_aliases/*; do
+    source $fname
+  done
+fi
 
