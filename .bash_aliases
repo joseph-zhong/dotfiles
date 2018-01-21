@@ -47,15 +47,19 @@ alias activate='source bin/activate'
 alias JOSEPHZ='pushd $JOSEPHZ > /dev/null'
 alias UW='pushd ~/Dropbox/UW > /dev/null'
 alias Stanford='pushd ~/Dropbox/Stanford > /dev/null'
-alias CS224N='pushd ~/Dropbox/Stanford/CS224N > /dev/null'
 alias CMU='pushd ~/Dropbox/CMU > /dev/null'
-alias CSE421='pushd ~/Dropbox/UW/CSE421 > /dev/null'
 
-### CSE461.
-alias CSE461='pushd ~/Dropbox/UW/CSE461 > /dev/null'
-alias proj1='pushd ~/Dropbox/UW/CSE461/projects/  > /dev/null'
-alias proj2='pushd ~/Dropbox/UW/CSE461/projects/2_Proxy/projProxy  > /dev/null'
-alias proj3='pushd ~/Dropbox/UW/CSE461/projects/3_Tor61/projTor61  > /dev/null'
+####
+# Classes
+####
+alias CS224N='pushd ~/Dropbox/Stanford/CS224N > /dev/null'
+alias CSE421='pushd ~/Dropbox/UW/CSE421 > /dev/null'
+alias CSE490R='pushd ~/Dropbox/UW/CSE490R > /dev/null'
+
+### CSE490R Robotics.
+alias robo='pushd ~/Dropbox/UW/CSE490R/labs > /dev/null'
+alias ssh-nvidia='ssh nvidia@10.42.0.1'
+alias src-devel='source $ROS/devel/setup.bash'
 
 ### CSE473 TA.
 alias CSE473='pushd $CSE473 > /dev/null'
