@@ -139,10 +139,10 @@ export PATH="$PATH:~/.local/bin"
 export PATH=$HOME/local/bin:$PATH
 
 # SRIO
+DEVD=~/Development
 if [[ `uname` == 'Linux' ]]; then
   WSD=~/ws
 else
-  DEVD=~/Development
   WSD=$DEVD/Work/Surround/ws
 fi
 export PATH=$WSD/git/src/bin:$PATH
