@@ -182,7 +182,7 @@ if [[ `hostname` == 'flatwhite'* ]] \
   IM2=$GRAIL/InteractiveModelnb
 else
   GRAIL=$DEVD/UW/GRAIL
-  IM1=$GRAIL/tmp/InteractiveModel
+  IM1=$GRAIL/InteractiveModel
 fi
 export IM_DIR=$IM1
 export IM2_DIR=$IM2
