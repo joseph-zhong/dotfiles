@@ -194,9 +194,8 @@ export PATH="${PATH}:$IM_DIR/archive/bin"
 # ROS
 if [[ `hostname` == "Adeline" ]]; then
   export ROS=/home/josephz/catkin_ws
-  export ROS_MASTER_URI=http://10.42.0.1:11311
   export ROS_PACKAGE_PATH
-  # export ROS_IP=10.42.0.196
+  export ROS_MASTER_URI=http://10.42.0.1:11311
   
   source /opt/ros/kinetic/setup.bash
   source $ROS/devel/setup.bash 
