@@ -61,6 +61,16 @@ alias robo='pushd ~/Dropbox/UW/CSE490R/labs > /dev/null'
 alias ssh-nvidia='ssh nvidia@10.42.0.1'
 alias src-devel='source $ROS/devel/setup.bash'
 
+function set_robot() {
+  if [ $1 == 'localhost' ]; then 
+    export ROS_MASTER_URI=http://localhost:11311
+  else 
+    export ROS_MASTER_URI=http://10.42.0.1:11311
+  fi
+  echo 'ROS_MASTER_URI set to ' $ROS_MASTER_URI
+}
+alias setrobot='set_robot'
+
 ### CSE473 TA.
 alias CSE473='pushd $CSE473 > /dev/null'
 
@@ -69,6 +79,7 @@ alias GRAIL='pushd $GRAIL > /dev/null'
 alias im1='pushd $IM1 > /dev/null'
 alias im2='pushd $GRAIL/InteractiveModel-Exp > /dev/null'
 alias im3='pushd $IM2 > /dev/null'
+alias im4='pushd /cse/web/homes/josephz/demo/InteractiveModelChat > /dev/null'
 
 alias speech2='pushd $IM1/ml/model/speech2 > /dev/null'
 alias archive='pushd $IM1/archive > /dev/null'

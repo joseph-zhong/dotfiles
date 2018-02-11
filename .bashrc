@@ -139,10 +139,10 @@ export PATH="$PATH:~/.local/bin"
 export PATH=$HOME/local/bin:$PATH
 
 # SRIO
+DEVD=~/Development
 if [[ `uname` == 'Linux' ]]; then
   WSD=~/ws
 else
-  DEVD=~/Development
   WSD=$DEVD/Work/Surround/ws
 fi
 export PATH=$WSD/git/src/bin:$PATH
@@ -182,7 +182,7 @@ if [[ `hostname` == 'flatwhite'* ]] \
   IM2=$GRAIL/InteractiveModelnb
 else
   GRAIL=$DEVD/UW/GRAIL
-  IM1=$GRAIL/tmp/InteractiveModel
+  IM1=$GRAIL/InteractiveModel
 fi
 export IM_DIR=$IM1
 export IM2_DIR=$IM2
@@ -194,9 +194,8 @@ export PATH="${PATH}:$IM_DIR/archive/bin"
 # ROS
 if [[ `hostname` == "Adeline" ]]; then
   export ROS=/home/josephz/catkin_ws
-  export ROS_MASTER_URI=http://10.42.0.1:11311
   export ROS_PACKAGE_PATH
-  # export ROS_IP=10.42.0.196
+  export ROS_MASTER_URI=http://10.42.0.1:11311
   
   source /opt/ros/kinetic/setup.bash
   source $ROS/devel/setup.bash 
