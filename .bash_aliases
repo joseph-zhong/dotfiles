@@ -98,6 +98,15 @@ alias supasorn3='pushd $IM2/supasorn2nb/ > /dev/null'
 alias ab1='source $IM_DIR_VIRTUALENV/bin/activate'
 alias ab2='source $IM_DIR/personal/infra/virtualenv/mozilla-deepspeech/bin/activate'
 
+function cbuild() {
+  if [[ $2 == 'release' ]]; then
+    cmake --build $IM_DIR/src/bin2 --target $1 -- -j $(nproc --all) 
+  else 
+    cmake --build $IM_DIR/src/debug --target $1 -- -j $(nproc --all) 
+  fi
+}
+alias cbuild='cbuild'
+
 ### Secret Stuffs.
 if [[ -d ".private_aliases" ]]; then
   for fname in .private_aliases/*; do
