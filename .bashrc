@@ -76,13 +76,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-###
-# Private Setup.
-##
-if [ -f ~/.privaterc ]; then
-  source ~/.privaterc
-fi
-
 ####
 # Bash completion 
 ####
@@ -209,4 +202,14 @@ if [[ `hostname` == "Adeline" ]]; then
   source /opt/ros/kinetic/setup.bash
   source $ROS/devel/setup.bash 
 fi
+
+###
+# Private Setup.
+##
+export PRIVATERC=~/.privaterc
+if [ -f $PRIVATERC ]; then
+  source $PRIVATERC
+fi
+
+
 
