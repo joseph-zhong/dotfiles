@@ -66,17 +66,6 @@ fi
 
 
 ####
-# Aliases
-####
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -alCF'
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-####
 # Bash completion 
 ####
 if ! shopt -oq posix; then
@@ -201,5 +190,16 @@ if [[ `hostname` == "Adeline" ]]; then
   
   source /opt/ros/kinetic/setup.bash
   source $ROS/devel/setup.bash 
+fi
+
+####
+# Aliases
+####
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -alCF'
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
 fi
 
