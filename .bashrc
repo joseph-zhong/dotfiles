@@ -192,8 +192,18 @@ if [[ `hostname` == "Adeline" ]]; then
   source $ROS/devel/setup.bash 
 fi
 
+###
 # PEM
+###
 export PEM_DIR=$DEVD/pem
+function scp-via-pem() {
+  pem=$1
+  src=$2
+  dst=$3
+  cmd="scp -i $pem -r $src $dst"
+  echo "Running $cmd..."
+  $cmd
+}
 
 ####
 # Aliases
