@@ -76,6 +76,12 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+###
+# Private Setup.
+##
+if [ -f ~/.privaterc ]; then
+  source ~/.privaterc
+fi
 
 ####
 # Bash completion 
