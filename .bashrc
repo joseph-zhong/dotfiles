@@ -192,6 +192,9 @@ if [[ `hostname` == "Adeline" ]]; then
   source $ROS/devel/setup.bash 
 fi
 
+# PEM
+export PEM_DIR=$DEVD/pem
+
 ####
 # Aliases
 ####
