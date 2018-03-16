@@ -1,2 +1,8 @@
+# gitignore
+
+### General.
 .DS_Store
+
+### Private setup.
 .private_aliases/
+.privaterc
