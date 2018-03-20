@@ -98,46 +98,6 @@ fi
 # Variables
 ####
 
-# History
-export HISTSIZE=10000
-export HISTFILESIZE=10000
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-shopt -s checkwinsize
-
-# Loads NVM
-export NVM_DIR=~/.nvm
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Yarn
-export PATH="$HOME/.yarn/bin:$PATH"
-
-# Torch install.
-if [ -d ~/torch ]; then 
-  export PATH="~/torch/install/bin:$PATH"
-  source ~/torch/install/bin/torch-activate
-fi
-
-# CUDA 
-export CUDA_HOME=/usr/local/cuda
-export DYLD_LIBRARY_PATH="/usr/local/cuda/lib64":$DYLD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$DYLD_LIBRARY_PATH
-export PATH=$DYLD_LIBRARY_PATH:$PATH
-export PATH=/usr/local/cuda/bin:$PATH
-
-# MySQL
-export PATH=$PATH:/usr/local/mysql/bin
-
-# Caffe
-export PYTHONPATH=$HOME/caffe/python:$PYTHONPATH
-
-# Local Bin
-export PATH="$PATH:~/.local/bin"
-export PATH=$HOME/local/bin:$PATH
-
 # SRIO
 DEVD=~/Development
 if [[ `uname` == 'Linux' ]]; then
@@ -188,8 +148,12 @@ else
 fi
 export IM_DIR=$IM1
 export IM2_DIR=$IM2
-export IM_DIR_TF_VERSION=tf-0.11.0
-export IM_DIR_VIRTUALENV=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION}
+export IM_DIR_TF_VERSION1=tf-0.11.0
+export IM_DIR_TF_VERSION2=py3-tf-1.3.0
+export IM_DIR_TF_VERSION3=tf-1.3.0
+export IM_DIR_VIRTUALENV1=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION1}
+export IM_DIR_VIRTUALENV2=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION2}
+export IM_DIR_VIRTUALENV3=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION3}
 export PYTHONPATH="${PYTHONPATH}:${IM1}"
 export PATH="${PATH}:$IM_DIR/archive/bin"
 export PATH="${PATH}:$IM_DIR/src/bin2"
@@ -203,4 +167,71 @@ if [[ `hostname` == "Adeline" ]]; then
   source /opt/ros/kinetic/setup.bash
   source $ROS/devel/setup.bash 
 fi
+
+# History
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+shopt -s checkwinsize
+
+# Loads NVM
+export NVM_DIR=~/.nvm
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Yarn
+export PATH="$HOME/.yarn/bin:$PATH"
+
+# Torch install.
+if [ -d ~/torch ]; then 
+  export PATH="~/torch/install/bin:$PATH"
+  source ~/torch/install/bin/torch-activate
+fi
+
+# CUDA 
+export CUDA_HOME=/usr/local/cuda-8.0
+export DYLD_LIBRARY_PATH="$CUDA_HOME/lib64":$DYLD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$DYLD_LIBRARY_PATH
+export PATH=$DYLD_LIBRARY_PATH:$PATH
+export PATH=$CUDA_HOME/bin:$PATH
+
+# MySQL
+export PATH=$PATH:/usr/local/mysql/bin
+
+# Caffe
+export PYTHONPATH=$HOME/caffe/python:$PYTHONPATH
+
+# OpenPose 
+export OPENPOSE_ROOT=/usr/local/openpose 
+export LD_LIBRARY_PATH=$OPENPOSE_ROOT/build/src/openpose:$LD_LIBRARY_PATH
+
+### PyOpenPose Python Wrapper
+# export PYTHONPATH=/usr/local/openpose/build/src/openpose:$PYTHONPATH
+export PYTHONPATH=/usr/local/PyOpenPose/build/PyOpenPoseLib:$PYTHONPATH
+# export PYTHONPATH=$OPENPOSE_ROOT:$PYTHONPATH
+
+# Local Bin
+export PATH="$PATH:~/.local/bin"
+export PATH=$HOME/local/bin:$PATH
+
+# CV2
+if [ -d $IM1 ]; then  
+  if [ -d /usr/local/packages/opencv-3.1 ]; then
+    for venv in $IM1/infra/virtualenv/*
+    do 
+      ln -fs /usr/local/packages/opencv-3.1/lib/python2.7/site-packages/cv2.so \
+        $venv/lib/python2.7/cv2.so 
+    done
+  elif [ -d /usr/local/opencv34 ]; then
+    for venv in $IM1/infra/virtualenv/*
+    do 
+      ln -fs /usr/local/opencv34/lib/python2.7/site-packages/cv2.so \
+        $venv/lib/python2.7/cv2.so 
+    done
+  fi
+fi
+
 

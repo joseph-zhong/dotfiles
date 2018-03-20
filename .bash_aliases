@@ -95,17 +95,21 @@ alias supasorn1='pushd $IM2/supasorn/ > /dev/null'
 alias supasorn2='pushd $IM2/supasorn2/ > /dev/null'
 alias supasorn3='pushd $IM2/supasorn2nb/ > /dev/null'
 
-alias ab1='source $IM_DIR_VIRTUALENV/bin/activate'
-alias ab2='source $IM_DIR/personal/infra/virtualenv/mozilla-deepspeech/bin/activate'
+alias ab1='source $IM_DIR_VIRTUALENV1/bin/activate'
+alias ab2='source $IM_DIR_VIRTUALENV2/bin/activate'
+alias ab3='source $IM_DIR_VIRTUALENV3/bin/activate'
 
 function cbuild() {
   if [[ $2 == 'release' ]]; then
-    cmake --build $IM_DIR/src/bin2 --target $1 -- -j $(nproc --all) 
+    cmd="cmake --build $IM_DIR/src/bin2 --target $1 -- -j $(nproc --all)"
   else 
-    cmake --build $IM_DIR/src/debug --target $1 -- -j $(nproc --all) 
+    cmd="cmake --build $IM_DIR/src/debug --target $1 -- -j $(nproc --all)"
   fi
+  $cmd
 }
+
 alias cbuild='cbuild'
+alias creload='/homes/grail/josephz/Applications/clion-2017.3.2/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /homes/grail/josephz/GRAIL/InteractiveModel/src'
 
 ### Secret Stuffs.
 if [[ -d ".private_aliases" ]]; then
