@@ -66,18 +66,6 @@ fi
 
 
 ####
-# Aliases
-####
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -alCF'
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-
-####
 # Bash completion 
 ####
 if ! shopt -oq posix; then
@@ -234,4 +222,27 @@ if [ -d $IM1 ]; then
   fi
 fi
 
+###
+# PEM
+###
+export PEM_DIR=$DEVD/pem
+function scp-via-pem() {
+  pem=$1
+  src=$2
+  dst=$3
+  cmd="scp -i $pem -r $src $dst"
+  echo "Running $cmd..."
+  $cmd
+}
+
+####
+# Aliases
+####
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -alCF'
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
