@@ -39,7 +39,7 @@ alias db1='pushd ~/Dropbox/ > /dev/null'
 # Misc
 ####
 alias activate='source bin/activate'
-
+alias sshXL='ssh -XL localhost:8888:localhost:8888'
 
 ####
 # School Related
@@ -98,6 +98,7 @@ alias supasorn3='pushd $IM2/supasorn2nb/ > /dev/null'
 alias ab1='source $IM_DIR_VIRTUALENV1/bin/activate'
 alias ab2='source $IM_DIR_VIRTUALENV2/bin/activate'
 alias ab3='source $IM_DIR_VIRTUALENV3/bin/activate'
+alias ab4='source $IM_DIR_VIRTUALENV4/bin/activate'
 
 function cbuild() {
   if [[ $2 == 'release' ]]; then

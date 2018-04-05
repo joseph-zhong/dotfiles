@@ -139,9 +139,12 @@ export IM2_DIR=$IM2
 export IM_DIR_TF_VERSION1=tf-0.11.0
 export IM_DIR_TF_VERSION2=py3-tf-1.3.0
 export IM_DIR_TF_VERSION3=tf-1.3.0
+export IM_DIR_TF_VERSION4=tf-1.4.0
 export IM_DIR_VIRTUALENV1=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION1}
 export IM_DIR_VIRTUALENV2=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION2}
 export IM_DIR_VIRTUALENV3=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION3}
+export IM_DIR_VIRTUALENV4=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION4}
+export WORKON_HOME=$IM1/infra/virtualenv
 export PYTHONPATH="${PYTHONPATH}:${IM1}"
 export PATH="${PATH}:$IM_DIR/archive/bin"
 export PATH="${PATH}:$IM_DIR/src/bin2"
@@ -205,22 +208,22 @@ export PYTHONPATH=/usr/local/PyOpenPose/build/PyOpenPoseLib:$PYTHONPATH
 export PATH="$PATH:~/.local/bin"
 export PATH=$HOME/local/bin:$PATH
 
-# CV2
-if [ -d $IM1 ]; then  
-  if [ -d /usr/local/packages/opencv-3.1 ]; then
-    for venv in $IM1/infra/virtualenv/*
-    do 
-      ln -fs /usr/local/packages/opencv-3.1/lib/python2.7/site-packages/cv2.so \
-        $venv/lib/python2.7/cv2.so 
-    done
-  elif [ -d /usr/local/opencv34 ]; then
-    for venv in $IM1/infra/virtualenv/*
-    do 
-      ln -fs /usr/local/opencv34/lib/python2.7/site-packages/cv2.so \
-        $venv/lib/python2.7/cv2.so 
-    done
-  fi
-fi
+# OpenCV Support on Grail Lab Machines.
+# if [ -d $IM_DIR ]; then  
+#   # Check for an OpenCV Installation.
+#   if [ -d /usr/local/packages/opencv-3.1 ]; then
+#     opencv_so=/usr/local/packages/opencv-3.1/lib/python2.7/site-packages/cv2.so
+#   elif [ -d /usr/local/opencv34 ]; then
+#     opencv_so=/usr/local/opencv34/lib/python2.7/site-packages/cv2.so
+#   fi
+# 
+#   # Symblink the cv2 installation to each virtualenv.
+#  for venv in $IM_DIR/infra/virtualenv/*/
+#  do 
+#     ln -fs $opencv_so \
+#       $venv/lib/python2.7/site-packages/cv2.so 
+#   done
+# fi
 
 ###
 # PEM
