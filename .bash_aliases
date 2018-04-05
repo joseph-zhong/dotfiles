@@ -39,7 +39,13 @@ alias db1='pushd ~/Dropbox/ > /dev/null'
 # Misc
 ####
 alias activate='source bin/activate'
-alias sshXL='ssh -XL localhost:8888:localhost:8888'
+alias sshXL='sshXL'
+
+function sshXL() {
+  port=$1
+  dst=$2
+  ssh -XL localhost:$port:localhost:$port $dst
+}
 
 ####
 # School Related
