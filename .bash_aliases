@@ -47,6 +47,10 @@ function sshXL() {
   ssh -XL localhost:$port:localhost:$port $dst
 }
 
+### NVIDIA Related
+function lib_installed() { /sbin/ldconfig -N -v $(sed 's/:/ /' <<< $LD_LIBRARY_PATH) 2>/dev/null | grep $1; }
+function check() { lib_installed $1 && echo "$1 is installed" || echo "ERROR: $1 is NOT installed"; }
+
 ####
 # School Related
 ####
@@ -90,6 +94,7 @@ alias im4='pushd /cse/web/homes/josephz/demo/InteractiveModelChat > /dev/null'
 alias speech2='pushd $IM1/ml/model/speech2 > /dev/null'
 alias archive='pushd $IM1/archive > /dev/null'
 alias scripts='pushd $IM1/ml/scripts > /dev/null'
+alias notebooks='pushd $IM1/ml/notebooks/josephz > /dev/null'
 alias infra='pushd $IM1/infra > /dev/null'
 
 alias personal='pushd $IM1/personal > /dev/null'
