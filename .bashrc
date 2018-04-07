@@ -114,19 +114,9 @@ else
 fi 
 
 ### GRAIL.
-if [[ `hostname` == 'flatwhite'* ]] \
-  || [[ `hostname` == 'sanka'* ]] \
-  || [[ `hostname` == 'nescafe'* ]] \
-  || [[ `hostname` == 'holland'* ]] \
-  || [[ `hostname` == 'keech'* ]] \
-  || [[ `hostname` == 'roberts'* ]] \
-  || [[ `hostname` == 'robson'* ]] \
-  || [[ `hostname` == 'arusha'* ]] \
-  || [[ `hostname` == 'grande'* ]] \
-  || [[ `hostname` == 'arnold'* ]] \
-  || [[ `hostname` == 'breve'* ]] \
-  || [[ `hostname` == 'parsons'* ]] \
-  || [[ `hostname` == 'schneider'* ]]; then
+hname=$(hostname | cut -d "." -f1)
+if grep -Fxq $hname ~/.grail_hosts.txt
+then
   GRAIL=~/GRAIL
   IM1=$GRAIL/InteractiveModel
   IM2=$GRAIL/InteractiveModelnb
