@@ -126,8 +126,8 @@ else
 fi
 export IM_DIR=$IM1
 export IM2_DIR=$IM2
-export IM_DIR_TF_VERSION1=tf-0.11.0
-export IM_DIR_TF_VERSION2=py3-tf-1.3.0
+export IM_DIR_TF_VERSION1=tf-0.10.0
+export IM_DIR_TF_VERSION2=tf-0.11.0
 export IM_DIR_TF_VERSION3=tf-1.3.0
 export IM_DIR_TF_VERSION4=tf-1.4.0
 export IM_DIR_VIRTUALENV1=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION1}
