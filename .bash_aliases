@@ -80,7 +80,6 @@ function set_robot() {
   fi
   echo 'ROS_MASTER_URI set to ' $ROS_MASTER_URI
 }
-alias setrobot='set_robot'
 
 ### CSE473 TA.
 alias CSE473='pushd $CSE473 > /dev/null'
@@ -112,6 +111,7 @@ alias ab2='source $IM_DIR_VIRTUALENV2/bin/activate'
 alias ab3='source $IM_DIR_VIRTUALENV3/bin/activate'
 alias ab4='source $IM_DIR_VIRTUALENV4/bin/activate'
 
+### Grail: CBuild.
 function cbuild() {
   if [[ $2 == 'release' ]]; then
     cmd="cmake --build $IM_DIR/src/bin2 --target $1 -- -j $(nproc --all)"
@@ -121,8 +121,22 @@ function cbuild() {
   $cmd
 }
 
-alias cbuild='cbuild'
 alias creload='/homes/grail/josephz/Applications/clion-2017.3.2/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /homes/grail/josephz/GRAIL/InteractiveModel/src'
+
+### Grail: FFmpeg.
+function ffmpeg_png2mp4() {
+  src=$1
+  dst=$2
+  
+  # cmd="ffmpeg -y -r 29.97 -i $src -codec x264 -c:v libx264 -vf scale=trunc(iw/2)*2:trunc(ih/2)*2 -b:v 20000k $dst" 
+  cmd="ffmpeg -y -r 29.97 -i $src -codec x264 -c:v libx264 -b:v 20000k $dst" 
+
+  echo "Converting png2mp4..."
+  echo "Running Command: $cmd"
+  $cmd
+  echo
+  echo "Done! Output mp4 to $dst"
+}
 
 ### Secret Stuffs.
 if [[ -d ".private_aliases" ]]; then
