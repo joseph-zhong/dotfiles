@@ -116,19 +116,9 @@ export PYTHONPATH="$DRL_DIR:$PYTHONPATH"
 
 
 ### GRAIL.
-if [[ `hostname` == 'flatwhite'* ]] \
-  || [[ `hostname` == 'sanka'* ]] \
-  || [[ `hostname` == 'nescafe'* ]] \
-  || [[ `hostname` == 'holland'* ]] \
-  || [[ `hostname` == 'keech'* ]] \
-  || [[ `hostname` == 'roberts'* ]] \
-  || [[ `hostname` == 'robson'* ]] \
-  || [[ `hostname` == 'arusha'* ]] \
-  || [[ `hostname` == 'grande'* ]] \
-  || [[ `hostname` == 'arnold'* ]] \
-  || [[ `hostname` == 'breve'* ]] \
-  || [[ `hostname` == 'parsons'* ]] \
-  || [[ `hostname` == 'schneider'* ]]; then
+hname=$(hostname | cut -d "." -f1)
+if grep -Fxq $hname ~/.grail_hosts.txt
+then
   GRAIL=~/GRAIL
   IM1=$GRAIL/InteractiveModel
   IM2=$GRAIL/InteractiveModelnb
@@ -138,12 +128,15 @@ else
 fi
 export IM_DIR=$IM1
 export IM2_DIR=$IM2
-export IM_DIR_TF_VERSION1=tf-0.11.0
-export IM_DIR_TF_VERSION2=py3-tf-1.3.0
+export IM_DIR_TF_VERSION1=tf-0.10.0
+export IM_DIR_TF_VERSION2=tf-0.11.0
 export IM_DIR_TF_VERSION3=tf-1.3.0
+export IM_DIR_TF_VERSION4=tf-1.4.0
 export IM_DIR_VIRTUALENV1=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION1}
 export IM_DIR_VIRTUALENV2=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION2}
 export IM_DIR_VIRTUALENV3=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION3}
+export IM_DIR_VIRTUALENV4=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION4}
+export WORKON_HOME=$IM1/infra/virtualenv
 export PYTHONPATH="${PYTHONPATH}:${IM1}"
 export PATH="${PATH}:$IM_DIR/archive/bin"
 export PATH="${PATH}:$IM_DIR/src/bin2"
@@ -182,7 +175,7 @@ if [ -d ~/torch ]; then
 fi
 
 # CUDA 
-export CUDA_HOME=/usr/local/cuda-8.0
+export CUDA_HOME=/usr/local/cuda-9.1
 export DYLD_LIBRARY_PATH="$CUDA_HOME/lib64":$DYLD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$DYLD_LIBRARY_PATH
 export PATH=$DYLD_LIBRARY_PATH:$PATH
@@ -211,22 +204,22 @@ export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/.mujoco/mjpro150/bin
 export PATH="$PATH:~/.local/bin"
 export PATH=$HOME/local/bin:$PATH
 
-# GRAIL: CV2 Setup
-if [ -d $IM1 ]; then  
-  if [ -d /usr/local/packages/opencv-3.1 ]; then
-    for venv in $IM1/infra/virtualenv/*
-    do 
-      ln -fs /usr/local/packages/opencv-3.1/lib/python2.7/site-packages/cv2.so \
-        $venv/lib/python2.7/cv2.so 
-    done
-  elif [ -d /usr/local/opencv34 ]; then
-    for venv in $IM1/infra/virtualenv/*
-    do 
-      ln -fs /usr/local/opencv34/lib/python2.7/site-packages/cv2.so \
-        $venv/lib/python2.7/cv2.so 
-    done
-  fi
-fi
+# OpenCV Support on Grail Lab Machines.
+# if [ -d $IM_DIR ]; then  
+#   # Check for an OpenCV Installation.
+#   if [ -d /usr/local/packages/opencv-3.1 ]; then
+#     opencv_so=/usr/local/packages/opencv-3.1/lib/python2.7/site-packages/cv2.so
+#   elif [ -d /usr/local/opencv34 ]; then
+#     opencv_so=/usr/local/opencv34/lib/python2.7/site-packages/cv2.so
+#   fi
+# 
+#   # Symblink the cv2 installation to each virtualenv.
+#  for venv in $IM_DIR/infra/virtualenv/*/
+#  do 
+#     ln -fs $opencv_so \
+#       $venv/lib/python2.7/site-packages/cv2.so 
+#   done
+# fi
 
 ###
 # PEM
@@ -252,3 +245,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+
+# added by Anaconda2 installer
+export PATH="/homes/grail/josephz/anaconda2/bin:$PATH"
