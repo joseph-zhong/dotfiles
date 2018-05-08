@@ -173,7 +173,7 @@ if [ -d ~/torch ]; then
 fi
 
 # CUDA 
-export CUDA_HOME=/usr/local/cuda-8.0
+export CUDA_HOME=/usr/local/cuda-9.1
 export DYLD_LIBRARY_PATH="$CUDA_HOME/lib64":$DYLD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$DYLD_LIBRARY_PATH
 export PATH=$DYLD_LIBRARY_PATH:$PATH
@@ -239,3 +239,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+
+# added by Anaconda2 installer
+export PATH="/homes/grail/josephz/anaconda2/bin:$PATH"

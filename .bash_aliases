@@ -53,6 +53,11 @@ function lib_installed() { /sbin/ldconfig -N -v $(sed 's/:/ /' <<< $LD_LIBRARY_P
 function check() { lib_installed $1 && echo "$1 is installed" || echo "ERROR: $1 is NOT installed"; }
 
 ####
+# Side Stuff
+###
+alias deep-agent='pushd ~/personal/ws/deep-trading-agent > /dev/null'
+
+####
 # School Related
 ####
 alias JOSEPHZ='pushd $JOSEPHZ > /dev/null'
@@ -114,14 +119,14 @@ alias ab4='source $IM_DIR_VIRTUALENV4/bin/activate'
 ### Grail: CBuild.
 function cbuild() {
   if [[ $2 == 'release' ]]; then
-    cmd="cmake --build $IM_DIR/src/bin2 --target $1 -- -j $(nproc --all)"
+    cmd="/homes/grail/josephz/Applications/clion-2017.3.2/bin/cmake/bin/cmake --build $IM_DIR/src/bin2 --target $1 -- -j $(nproc --all)"
   else 
-    cmd="cmake --build $IM_DIR/src/debug --target $1 -- -j $(nproc --all)"
+    cmd="/homes/grail/josephz/Applications/clion-2017.3.2/bin/cmake/bin/cmake --build $IM_DIR/src/cmake-build-debug --target $1 -- -j $(nproc --all)"
   fi
   $cmd
 }
 
-alias creload='/homes/grail/josephz/Applications/clion-2017.3.2/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /homes/grail/josephz/GRAIL/InteractiveModel/src'
+alias creload='/homes/grail/josephz/Applications/clion-2017.3.2/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /homes/grail/josephz/GRAIL/InteractiveModel/personal/src'
 
 ### Grail: FFmpeg.
 function ffmpeg_png2mp4() {
@@ -129,9 +134,24 @@ function ffmpeg_png2mp4() {
   dst=$2
   
   # cmd="ffmpeg -y -r 29.97 -i $src -codec x264 -c:v libx264 -vf scale=trunc(iw/2)*2:trunc(ih/2)*2 -b:v 20000k $dst" 
-  cmd="ffmpeg -y -r 29.97 -i $src -codec x264 -c:v libx264 -b:v 20000k $dst" 
+  # cmd="ffmpeg -y -r 29.97 -i $src -codec x264 -c:v libx264 -b:v 20000k $dst" 
+  cmd="ffmpeg -y -r 29.97 -i $src -pix_fmt yuv420p $dst" 
 
   echo "Converting png2mp4..."
+  echo "Running Command: $cmd"
+  $cmd
+  echo
+  echo "Done! Output mp4 to $dst"
+}
+
+function ffmpeg_wav-png2mp4() {
+  src=$1
+  wav=$2
+  dst=$3
+  
+  cmd="ffmpeg -y -r 29.97 -i $src -i $wav -pix_fmt yuv420p $dst" 
+
+  echo "Converting wav-png2mp4..."
   echo "Running Command: $cmd"
   $cmd
   echo
