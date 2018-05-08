@@ -45,7 +45,7 @@ alias activate='source bin/activate'
 # School Related
 ####
 alias JOSEPHZ='pushd $JOSEPHZ > /dev/null'
-alias UW='pushd ~/Dropbox/UW > /dev/null'
+alias UW='pushd $UW_DIR > /dev/null'
 alias Stanford='pushd ~/Dropbox/Stanford > /dev/null'
 alias CMU='pushd ~/Dropbox/CMU > /dev/null'
 
@@ -53,11 +53,10 @@ alias CMU='pushd ~/Dropbox/CMU > /dev/null'
 # Classes
 ####
 alias CS224N='pushd ~/Dropbox/Stanford/CS224N > /dev/null'
-alias CSE421='pushd ~/Dropbox/UW/CSE421 > /dev/null'
-alias CSE490R='pushd ~/Dropbox/UW/CSE490R > /dev/null'
+alias CSE599='pushd $DRL_DIR > /dev/null'
 
 ### CSE490R Robotics.
-alias robo='pushd ~/Dropbox/UW/CSE490R/labs > /dev/null'
+alias robo='pushd $UW_DIR/CSE490R/labs > /dev/null'
 alias ssh-nvidia='ssh nvidia@10.42.0.1'
 alias src-devel='source $ROS/devel/setup.bash'
 
