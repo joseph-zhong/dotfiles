@@ -190,6 +190,7 @@ export PYTHONPATH=$HOME/caffe/python:$PYTHONPATH
 # OpenPose 
 export OPENPOSE_ROOT=/usr/local/openpose 
 export LD_LIBRARY_PATH=$OPENPOSE_ROOT/build/src/openpose:$LD_LIBRARY_PATH
+export PATH=$OPENPOSE_ROOT/build/examples/openpose:$PATH
 
 ### PyOpenPose Python Wrapper
 # export PYTHONPATH=/usr/local/openpose/build/src/openpose:$PYTHONPATH
