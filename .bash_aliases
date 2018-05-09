@@ -132,7 +132,9 @@ alias creload='/homes/grail/josephz/Applications/clion-2017.3.2/bin/cmake/bin/cm
 function ffmpeg_png2mp4() {
   src=$1
   dst=$2
-  
+
+  mkdir -p $(dirname $dst)
+
   # cmd="ffmpeg -y -r 29.97 -i $src -codec x264 -c:v libx264 -vf scale=trunc(iw/2)*2:trunc(ih/2)*2 -b:v 20000k $dst" 
   # cmd="ffmpeg -y -r 29.97 -i $src -codec x264 -c:v libx264 -b:v 20000k $dst" 
   cmd="ffmpeg -y -r 29.97 -i $src -pix_fmt yuv420p $dst" 
