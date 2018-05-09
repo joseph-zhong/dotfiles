@@ -103,15 +103,17 @@ export TBD=$WSD/var/shared/shared/data/ml/tb
  
 export PAPERS=~/Papers
 export DOTFILES=~/dotfiles
+export DROPBOX=~/Dropbox
+export UW_DIR=$DROPBOX/UW
 
-### CSE473.
+### CSE.
 if [[ `hostname` == *'.cs.washington.edu' ]]; then
   CSE=/cse/web/
-  CSE473=$CSE/courses/cse473/18wi
   JOSEPHZ=$CSE/homes/josephz
-else
-  CSE473=~/Dropbox/UW/TA/CSE473
 fi 
+export DRL_DIR=$UW_DIR/CSE599G1/hw/drl_hw1
+export PYTHONPATH="$DRL_DIR:$PYTHONPATH"
+
 
 ### GRAIL.
 hname=$(hostname | cut -d "." -f1)
@@ -193,6 +195,10 @@ export LD_LIBRARY_PATH=$OPENPOSE_ROOT/build/src/openpose:$LD_LIBRARY_PATH
 # export PYTHONPATH=/usr/local/openpose/build/src/openpose:$PYTHONPATH
 export PYTHONPATH=/usr/local/PyOpenPose/build/PyOpenPoseLib:$PYTHONPATH
 # export PYTHONPATH=$OPENPOSE_ROOT:$PYTHONPATH
+
+# MuJoCo
+export LD_LIBRARY_PATH="$HOME/.mujoco/mjpro150/bin:$LD_LIBRARY_PATH"
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/.mujoco/mjpro150/bin
 
 # Local Bin
 export PATH="$PATH:~/.local/bin"
