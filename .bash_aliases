@@ -89,75 +89,9 @@ function set_robot() {
 alias CSE473='pushd $CSE473 > /dev/null'
 
 ### GRAIL.
-alias GRAIL='pushd $GRAIL > /dev/null'
-alias im1='pushd $IM1 > /dev/null'
-alias im2='pushd $GRAIL/InteractiveModel-Exp > /dev/null'
-alias im3='pushd $IM2 > /dev/null'
-alias im4='pushd /cse/web/homes/josephz/demo/InteractiveModelChat > /dev/null'
-
-alias speech2='pushd $IM1/ml/model/speech2 > /dev/null'
-alias archive='pushd $IM1/archive > /dev/null'
-alias scripts='pushd $IM1/ml/scripts > /dev/null'
-alias notebooks='pushd $IM1/ml/notebooks/josephz > /dev/null'
-alias infra='pushd $IM1/infra > /dev/null'
-
-alias personal='pushd $IM1/personal > /dev/null'
-alias demo='pushd $IMD1/personal/demo > /dev/null'
-alias web='pushd $IM1/personal/demo/web > /dev/null'
-alias ds1='pushd $IM1/personal/externals/DeepSpeech > /dev/null'
-
-alias supasorn1='pushd $IM2/supasorn/ > /dev/null'
-alias supasorn2='pushd $IM2/supasorn2/ > /dev/null'
-alias supasorn3='pushd $IM2/supasorn2nb/ > /dev/null'
-
-alias ab1='source $IM_DIR_VIRTUALENV1/bin/activate'
-alias ab2='source $IM_DIR_VIRTUALENV2/bin/activate'
-alias ab3='source $IM_DIR_VIRTUALENV3/bin/activate'
-alias ab4='source $IM_DIR_VIRTUALENV4/bin/activate'
-
-### Grail: CBuild.
-function cbuild() {
-  if [[ $2 == 'release' ]]; then
-    cmd="/homes/grail/josephz/Applications/clion-2017.3.2/bin/cmake/bin/cmake --build $IM_DIR/src/bin2 --target $1 -- -j $(nproc --all)"
-  else 
-    cmd="/homes/grail/josephz/Applications/clion-2017.3.2/bin/cmake/bin/cmake --build $IM_DIR/src/cmake-build-debug --target $1 -- -j $(nproc --all)"
-  fi
-  $cmd
-}
-
-alias creload='/homes/grail/josephz/Applications/clion-2017.3.2/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /homes/grail/josephz/GRAIL/InteractiveModel/personal/src'
-
-### Grail: FFmpeg.
-function ffmpeg_png2mp4() {
-  src=$1
-  dst=$2
-
-  mkdir -p $(dirname $dst)
-
-  # cmd="ffmpeg -y -r 29.97 -i $src -codec x264 -c:v libx264 -vf scale=trunc(iw/2)*2:trunc(ih/2)*2 -b:v 20000k $dst" 
-  # cmd="ffmpeg -y -r 29.97 -i $src -codec x264 -c:v libx264 -b:v 20000k $dst" 
-  cmd="ffmpeg -y -r 29.97 -i $src -pix_fmt yuv420p $dst" 
-
-  echo "Converting png2mp4..."
-  echo "Running Command: $cmd"
-  $cmd
-  echo
-  echo "Done! Output mp4 to $dst"
-}
-
-function ffmpeg_wav-png2mp4() {
-  src=$1
-  wav=$2
-  dst=$3
-  
-  cmd="ffmpeg -y -r 29.97 -i $src -i $wav -pix_fmt yuv420p $dst" 
-
-  echo "Converting wav-png2mp4..."
-  echo "Running Command: $cmd"
-  $cmd
-  echo
-  echo "Done! Output mp4 to $dst"
-}
+if [[ ! -f "~/.grail_aliases" ]]; then
+  source ~/.grail_aliases
+fi
 
 ### Secret Stuffs.
 if [[ -d ".private_aliases" ]]; then
