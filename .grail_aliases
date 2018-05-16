@@ -97,6 +97,8 @@ function ffmpeg_opts-wav-png2mp4() {
   num_frames=$( echo $secs*$fps | bc )
   num_frames=$( echo "($num_frames+0.5)/1" | bc )
 
+  mkdir -p $(dirname $dst)
+
   cmd="ffmpeg -y -start_number $start_number -r 29.97 -i $src -ss $start -i $wav -pix_fmt yuv420p -t $secs $dst"
 
   echo "Converting wav + mp4 -> png..."
