@@ -169,7 +169,7 @@ export NVM_DIR=~/.nvm
 export PATH="$HOME/.yarn/bin:$PATH"
 
 # Torch install.
-if [ -d ~/torch ]; then 
+if [ -f  ~/torch/install/bin/torch-activate ]; then 
   export PATH="~/torch/install/bin:$PATH"
   source ~/torch/install/bin/torch-activate
 fi
