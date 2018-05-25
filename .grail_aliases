@@ -63,6 +63,8 @@ function ffmpeg_wav-png2mp4() {
   
   cmd="ffmpeg -y -r 29.97 -i $src -i $wav -pix_fmt yuv420p $dst" 
 
+  mkdir -p $(dirname $dst)
+
   echo "Converting wav-png2mp4..."
   echo "Running Command: $cmd"
   $cmd
