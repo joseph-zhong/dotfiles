@@ -146,6 +146,8 @@ else
   WSD=$DEVD/Work/Surround/ws
 fi
 export PATH=$WSD/git/src/bin:$PATH
+# export PYTHONPATH="${PYTHONPATH}:$WSD/git/src/common/pymod"
+export PYTHONPATH="${PYTHONPATH}:$WSD/git/ml/framework/pymod"
 
 # Development Directories
 export MLD=$WSD/git/src/common/ml/pymod/surroundio/ml
@@ -183,6 +185,7 @@ if [[ `hostname` == 'flatwhite'* ]] \
 else
   GRAIL=$DEVD/UW/GRAIL
   IM1=$GRAIL/InteractiveModel
+  IM2=$GRAIL/InteractiveModelnb
 fi
 export IM_DIR=$IM1
 export IM2_DIR=$IM2
@@ -195,9 +198,14 @@ export PATH="${PATH}:$IM_DIR/archive/bin"
 if [[ `hostname` == "Adeline" ]]; then
   export ROS=/home/josephz/catkin_ws
   export ROS_PACKAGE_PATH
-  export ROS_MASTER_URI=http://10.42.0.1:11311
+  export ROS_MASTER_URI=http://localhost:11311
+  export PYTHONPATH=$PYTHONPATH:~/Dropbox/UW/CSE490R/labs/src/lab3/src
+  # export ROS_MASTER_URI=http://10.42.0.1:11311
+  # export ROS_IP=10.42.0.196
   
   source /opt/ros/kinetic/setup.bash
   source $ROS/devel/setup.bash 
 fi
+
+
 
