@@ -66,18 +66,6 @@ fi
 
 
 ####
-# Aliases
-####
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -alCF'
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-
-####
 # Bash completion 
 ####
 if ! shopt -oq posix; then
@@ -98,46 +86,6 @@ fi
 # Variables
 ####
 
-# History
-export HISTSIZE=10000
-export HISTFILESIZE=10000
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-shopt -s checkwinsize
-
-# Loads NVM
-export NVM_DIR=~/.nvm
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Yarn
-export PATH="$HOME/.yarn/bin:$PATH"
-
-# Torch install.
-if [ -d ~/torch ]; then 
-  export PATH="~torch/install/bin:$PATH"
-  . /home/josephz/torch/install/bin/torch-activate
-fi
-
-# CUDA 
-export CUDA_HOME=/usr/local/cuda
-export DYLD_LIBRARY_PATH="/usr/local/cuda/lib64":$DYLD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$DYLD_LIBRARY_PATH
-export PATH=$DYLD_LIBRARY_PATH:$PATH
-export PATH=/usr/local/cuda/bin:$PATH
-
-# MySQL
-export PATH=$PATH:/usr/local/mysql/bin
-
-# Caffe
-export PYTHONPATH=$HOME/caffe/python:$PYTHONPATH
-
-# Local Bin
-export PATH="$PATH:~/.local/bin"
-export PATH=$HOME/local/bin:$PATH
-
 # SRIO
 DEVD=~/Development
 if [[ `uname` == 'Linux' ]]; then
@@ -157,28 +105,22 @@ export TBD=$WSD/var/shared/shared/data/ml/tb
  
 export PAPERS=~/Papers
 export DOTFILES=~/dotfiles
+export DROPBOX=~/Dropbox
+export UW_DIR=$DROPBOX/UW
 
-### CSE473.
+### CSE.
 if [[ `hostname` == *'.cs.washington.edu' ]]; then
   CSE=/cse/web/
-  CSE473=$CSE/courses/cse473/18wi
   JOSEPHZ=$CSE/homes/josephz
-else
-  CSE473=~/Dropbox/UW/TA/CSE473
 fi 
+export DRL_DIR=$UW_DIR/CSE599G1/hw/drl_hw1
+export PYTHONPATH="$DRL_DIR:$PYTHONPATH"
+
 
 ### GRAIL.
-if [[ `hostname` == 'flatwhite'* ]] \
-  || [[ `hostname` == 'holland'* ]] \
-  || [[ `hostname` == 'keech'* ]] \
-  || [[ `hostname` == 'roberts'* ]] \
-  || [[ `hostname` == 'robson'* ]] \
-  || [[ `hostname` == 'arusha'* ]] \
-  || [[ `hostname` == 'grande'* ]] \
-  || [[ `hostname` == 'arnold'* ]] \
-  || [[ `hostname` == 'breve'* ]] \
-  || [[ `hostname` == 'parsons'* ]] \
-  || [[ `hostname` == 'schneider'* ]]; then
+hname=$(hostname | cut -d "." -f1)
+if grep -Fxq $hname ~/.grail_hosts.txt
+then
   GRAIL=~/GRAIL
   IM1=$GRAIL/InteractiveModel
   IM2=$GRAIL/InteractiveModelnb
@@ -189,10 +131,18 @@ else
 fi
 export IM_DIR=$IM1
 export IM2_DIR=$IM2
-export IM_DIR_TF_VERSION=tf-0.11.0
-export IM_DIR_VIRTUALENV=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION}
+export IM_DIR_TF_VERSION1=tf-0.10.0
+export IM_DIR_TF_VERSION2=tf-0.11.0
+export IM_DIR_TF_VERSION3=tf-1.3.0
+export IM_DIR_TF_VERSION4=tf-1.4.0
+export IM_DIR_VIRTUALENV1=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION1}
+export IM_DIR_VIRTUALENV2=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION2}
+export IM_DIR_VIRTUALENV3=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION3}
+export IM_DIR_VIRTUALENV4=${IM_DIR}/infra/virtualenv/${IM_DIR_TF_VERSION4}
+export WORKON_HOME=$IM1/infra/virtualenv
 export PYTHONPATH="${PYTHONPATH}:${IM1}"
 export PATH="${PATH}:$IM_DIR/archive/bin"
+export PATH="${PATH}:$IM_DIR/src/bin2"
 
 # ROS
 if [[ `hostname` == "Adeline" ]]; then
@@ -207,5 +157,99 @@ if [[ `hostname` == "Adeline" ]]; then
   source $ROS/devel/setup.bash 
 fi
 
+# History
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+shopt -s checkwinsize
+
+# Loads NVM
+export NVM_DIR=~/.nvm
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Yarn
+export PATH="$HOME/.yarn/bin:$PATH"
+
+# Torch install.
+if [ -f  ~/torch/install/bin/torch-activate ]; then 
+  export PATH="~/torch/install/bin:$PATH"
+  source ~/torch/install/bin/torch-activate
+fi
+
+# CUDA 
+export CUDA_HOME=/usr/local/cuda-9.1
+export DYLD_LIBRARY_PATH="$CUDA_HOME/lib64":$DYLD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$DYLD_LIBRARY_PATH
+export PATH=$DYLD_LIBRARY_PATH:$PATH
+export PATH=$CUDA_HOME/bin:$PATH
+
+# MySQL
+export PATH=$PATH:/usr/local/mysql/bin
+
+# Caffe
+export PYTHONPATH=$HOME/caffe/python:$PYTHONPATH
+
+# OpenPose 
+export OPENPOSE_ROOT=/usr/local/openpose 
+export LD_LIBRARY_PATH=$OPENPOSE_ROOT/build/src/openpose:$LD_LIBRARY_PATH
+export PATH=$OPENPOSE_ROOT/build/examples/openpose:$PATH
+
+### PyOpenPose Python Wrapper
+# export PYTHONPATH=/usr/local/openpose/build/src/openpose:$PYTHONPATH
+export PYTHONPATH=/usr/local/PyOpenPose/build/PyOpenPoseLib:$PYTHONPATH
+# export PYTHONPATH=$OPENPOSE_ROOT:$PYTHONPATH
+
+# MuJoCo
+export LD_LIBRARY_PATH="$HOME/.mujoco/mjpro150/bin:$LD_LIBRARY_PATH"
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/.mujoco/mjpro150/bin
+
+# Local Bin
+export PATH="$PATH:~/.local/bin"
+export PATH=$HOME/local/bin:$PATH
+
+# OpenCV Support on Grail Lab Machines.
+# if [ -d $IM_DIR ]; then  
+#   # Check for an OpenCV Installation.
+#   if [ -d /usr/local/packages/opencv-3.1 ]; then
+#     opencv_so=/usr/local/packages/opencv-3.1/lib/python2.7/site-packages/cv2.so
+#   elif [ -d /usr/local/opencv34 ]; then
+#     opencv_so=/usr/local/opencv34/lib/python2.7/site-packages/cv2.so
+#   fi
+# 
+#   # Symblink the cv2 installation to each virtualenv.
+#  for venv in $IM_DIR/infra/virtualenv/*/
+#  do 
+#     ln -fs $opencv_so \
+#       $venv/lib/python2.7/site-packages/cv2.so 
+#   done
+# fi
+
+###
+# PEM
+###
+export PEM_DIR=$DEVD/pem
+function scp-via-pem() {
+  pem=$1
+  src=$2
+  dst=$3
+  cmd="scp -i $pem -r $src $dst"
+  echo "Running $cmd..."
+  $cmd
+}
+
+####
+# Aliases
+####
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -alCF'
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
 

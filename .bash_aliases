@@ -31,18 +31,33 @@ function cbuild() {
   echo "Done building!"
   echo ""
 }
-alias cbuild='cbuild' 
 
 ####
 # Misc
 ####
 alias activate='source bin/activate'
 
+function sshXL() {
+  port=$1
+  dst=$2
+  ssh -XL localhost:$port:localhost:$port $dst
+}
+
+### NVIDIA Related
+# Usage: `check libcuda`, `check libcudart`, `check libcudnn`.
+function lib_installed() { /sbin/ldconfig -N -v $(sed 's/:/ /' <<< $LD_LIBRARY_PATH) 2>/dev/null | grep $1; }
+function check() { lib_installed $1 && echo "$1 is installed" || echo "ERROR: $1 is NOT installed"; }
+
+####
+# Side Stuff
+###
+alias deep-agent='pushd ~/personal/ws/deep-trading-agent > /dev/null'
+
 ####
 # School Related
 ####
 alias JOSEPHZ='pushd $JOSEPHZ > /dev/null'
-alias UW='pushd ~/Dropbox/UW > /dev/null'
+alias UW='pushd $UW_DIR > /dev/null'
 alias Stanford='pushd ~/Dropbox/Stanford > /dev/null'
 alias CMU='pushd ~/Dropbox/CMU > /dev/null'
 
@@ -53,9 +68,10 @@ alias CS224N='pushd ~/Dropbox/Stanford/CS224N > /dev/null'
 alias PHIL240='pushd ~/Dropbox/UW/PHIL240 > /dev/null'
 alias CSE421='pushd ~/Dropbox/UW/CSE421 > /dev/null'
 alias CSE490R='pushd ~/Dropbox/UW/CSE490R > /dev/null'
+alias CSE599='pushd $DRL_DIR > /dev/null'
 
 ### CSE490R Robotics.
-alias robo='pushd ~/Dropbox/UW/CSE490R/labs > /dev/null'
+alias robo='pushd $UW_DIR/CSE490R/labs > /dev/null'
 alias ssh-nvidia='ssh nvidia@10.42.0.1'
 alias scp-to-nvidia='scp_to_nvidia()'
 alias scp-from-nvidia='scp_from_nvidia()'
@@ -79,34 +95,14 @@ function set_robot() {
   fi
   echo 'ROS_MASTER_URI set to ' $ROS_MASTER_URI
 }
-alias setrobot='set_robot'
 
 ### CSE473 TA.
 alias CSE473='pushd $CSE473 > /dev/null'
 
 ### GRAIL.
-alias GRAIL='pushd $GRAIL > /dev/null'
-alias im1='pushd $IM1 > /dev/null'
-alias im2='pushd $GRAIL/InteractiveModel-Exp > /dev/null'
-alias im3='pushd $IM2 > /dev/null'
-alias im4='pushd /cse/web/homes/josephz/demo/InteractiveModelChat > /dev/null'
-
-alias speech2='pushd $IM1/ml/model/speech2 > /dev/null'
-alias archive='pushd $IM1/archive > /dev/null'
-alias scripts='pushd $IM1/ml/scripts > /dev/null'
-alias infra='pushd $IM1/infra > /dev/null'
-
-alias personal='pushd $IM1/personal > /dev/null'
-alias demo='pushd $IMD1/personal/demo > /dev/null'
-alias web='pushd $IM1/personal/demo/web > /dev/null'
-alias ds1='pushd $IM1/personal/externals/DeepSpeech > /dev/null'
-
-alias supasorn1='pushd $IM2/supasorn/ > /dev/null'
-alias supasorn2='pushd $IM2/supasorn2/ > /dev/null'
-alias supasorn3='pushd $IM2/supasorn2nb/ > /dev/null'
-
-alias ab1='source $IM_DIR_VIRTUALENV/bin/activate'
-alias ab2='source $IM_DIR/personal/infra/virtualenv/mozilla-deepspeech/bin/activate'
+if [[ ! -f "~/.grail_aliases" ]]; then
+  source ~/.grail_aliases
+fi
 
 ### Secret Stuffs.
 if [[ -d ".private_aliases" ]]; then

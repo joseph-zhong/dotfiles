@@ -19,3 +19,15 @@ export PATH=/usr/local/bin:$PATH
 [[ -e "$HOME/.profile" ]] && . "$HOME/.profile"
 # can just mount as it silently returns if already mounted
 ecryptfs-mount-private
+
+export PYTHONPATH="$DRL_DIR:$PYTHONPATH"
+
+# added by Anaconda3 5.1.0 installer
+export PATH="/Users/josephz/anaconda3/bin:$PATH"
+
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/Users/josephz/.mujoco/mjpro150/bin
+
+# Setting PATH for Python 2.7
+# The original version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+export PATH
