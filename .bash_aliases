@@ -1,22 +1,5 @@
 # Bash Aliases 
 
-####
-# Standard Xevo directories
-####
-alias e1='pushd $WSD/git/src > /dev/null'
-alias s1='pushd $WSD/git/src/common/ml/scripts > /dev/null'
-alias md1='pushd $WSD/git/src/common/ml/pymod/xevo/ml/model > /dev/null'
-alias dd1='pushd $WSD/git/src/common/ml/pymod/xevo/ml/data > /dev/null'
-
-alias ja1='pushd $WSD/git/personal/josephz > /dev/null'
-alias aa1='source $WSD/git/personal/josephz/openface/bin/activate'
-
-alias tb1='pushd $WSD/var/shared/shared/data/ml/tb > /dev/null'
-alias d1='pushd $WSD/var/shared/shared/data/ml/datasets > /dev/null'
-alias r1='pushd $WSD/var/shared/shared/data/ml/raw > /dev/null'
-alias w1='pushd $WSD/var/shared/shared/data/ml/weights > /dev/null'
-alias m1='pushd $WSD/var/shared/shared/data/ml/models > /dev/null'
-
 # Papers directory.
 alias p1='pushd ~/Papers > /dev/null'
 
@@ -35,11 +18,25 @@ fi
 # Dropbox directory.
 alias db1='pushd ~/Dropbox/ > /dev/null'
 
+###
+# CMake
+###
+function cbuild() {
+  build=$1
+  target=$2
+  nproc=$(nproc --all)
+  echo "Building '$target' to directory '$build' with '$nproc' processes"
+  cmake --build $build --target $target -- -j $nproc
+  echo ""
+  echo "Done building!"
+  echo ""
+}
+alias cbuild='cbuild' 
+
 ####
 # Misc
 ####
 alias activate='source bin/activate'
-
 
 ####
 # School Related
@@ -53,17 +50,30 @@ alias CMU='pushd ~/Dropbox/CMU > /dev/null'
 # Classes
 ####
 alias CS224N='pushd ~/Dropbox/Stanford/CS224N > /dev/null'
+alias PHIL240='pushd ~/Dropbox/UW/PHIL240 > /dev/null'
 alias CSE421='pushd ~/Dropbox/UW/CSE421 > /dev/null'
 alias CSE490R='pushd ~/Dropbox/UW/CSE490R > /dev/null'
 
 ### CSE490R Robotics.
 alias robo='pushd ~/Dropbox/UW/CSE490R/labs > /dev/null'
 alias ssh-nvidia='ssh nvidia@10.42.0.1'
+alias scp-to-nvidia='scp_to_nvidia()'
+alias scp-from-nvidia='scp_from_nvidia()'
 alias src-devel='source $ROS/devel/setup.bash'
+
+function scp_to_nvidia() {
+  cmd=scp -vr $1 nvidia@10.42.0.1:~/catkin_ws/src/lab2/src
+  echo "Running " $cmd
+}
+
+function scp_from_nvidia() {
+  cmd="scp -vr nvidia@10.42.0.1:~/catkin_ws/src/lab2/src/$1 ."
+}
 
 function set_robot() {
   if [ $1 == 'localhost' ]; then 
     export ROS_MASTER_URI=http://localhost:11311
+    unset ROS_IP
   else 
     export ROS_MASTER_URI=http://10.42.0.1:11311
   fi
