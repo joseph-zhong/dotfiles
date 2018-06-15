@@ -105,7 +105,7 @@ if [[ ! -f "~/.grail_aliases" ]]; then
 fi
 
 ### Secret Stuffs.
-if [ -h ".private_aliases" ]; then
+if [ -h ~/.private_aliases ]; then
   for fname in ~/.private_aliases/*; do
     source $fname
   done
