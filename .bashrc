@@ -228,8 +228,18 @@ export PATH=$HOME/local/bin:$PATH
 #   done
 # fi
 
+###
+# Keras
+###
+
 # Keras Backend.
 KERAS_BACKEND=theano 
+export CPATH=$CPATH:~/.local/include
+export LIBRARY_PATH=$LIBRARY_PATH:~/.local/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/.local/lib
+
+# Anaconda 3
+export PATH=~/anaconda3/bin:$PATH
 
 ###
 # PEM
@@ -254,5 +264,4 @@ alias l='ls -alCF'
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
 
