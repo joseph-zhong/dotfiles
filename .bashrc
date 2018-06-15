@@ -228,6 +228,9 @@ export PATH=$HOME/local/bin:$PATH
 #   done
 # fi
 
+# Keras Backend.
+KERAS_BACKEND=theano 
+
 ###
 # PEM
 ###
