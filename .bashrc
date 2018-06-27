@@ -145,7 +145,7 @@ export PATH="${PATH}:$IM_DIR/archive/bin"
 export PATH="${PATH}:$IM_DIR/src/bin2"
 
 # ROS
-if [[ `hostname` == "Adeline" ]]; then
+if [[ -f /opt/ros/kinetic/setup.bash ]]; then
   export ROS=/home/josephz/catkin_ws
   export ROS_PACKAGE_PATH
   export ROS_MASTER_URI=http://localhost:11311
