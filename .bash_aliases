@@ -43,6 +43,12 @@ function sshXL() {
   ssh -XL localhost:$port:localhost:$port $dst
 }
 
+# XClip on Linux
+if hash xclip 2>/dev/null; then
+  alias setclip="xclip -selection c"
+  alias getclip="xclip -selection c -o"
+fi
+
 ### NVIDIA Related
 # Usage: `check libcuda`, `check libcudart`, `check libcudnn`.
 function lib_installed() { /sbin/ldconfig -N -v $(sed 's/:/ /' <<< $LD_LIBRARY_PATH) 2>/dev/null | grep $1; }
