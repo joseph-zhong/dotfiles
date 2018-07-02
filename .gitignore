@@ -4,5 +4,5 @@
 .DS_Store
 
 ### Private setup.
-.private_aliases/
+.private_aliases
 .privaterc
