@@ -91,10 +91,9 @@ DEVD=~/Development
 if [[ `uname` == 'Linux' ]]; then
   WSD=~/ws
 else
-  WSD=$DEVD/Work/Surround/ws
+  WSD=$DEVD/Work/Xevo/ws
 fi
 export PATH=$WSD/git/src/bin:$PATH
-# export PYTHONPATH="${PYTHONPATH}:$WSD/git/src/common/pymod"
 export PYTHONPATH="${PYTHONPATH}:$WSD/git/ml/framework/pymod"
 
 # Development Directories
