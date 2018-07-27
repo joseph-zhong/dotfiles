@@ -6,3 +6,6 @@
 ### Private setup.
 .private_aliases
 .privaterc
+
+### SSH Keys
+.ssh/id_rsa
