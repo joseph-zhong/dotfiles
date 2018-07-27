@@ -95,6 +95,7 @@ else
 fi
 export PATH=$WSD/git/src/bin:$PATH
 export PYTHONPATH="${PYTHONPATH}:$WSD/git/ml/framework/pymod"
+export PYTHONPATH="${PYTHONPATH}:$WSD/git/ml/personal/jzhong/experiments/2018/py/ml/computer_vision_utils"
 
 # Development Directories
 export MLD=$WSD/git/src/common/ml/pymod/surroundio/ml
