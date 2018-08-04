@@ -1,5 +1,8 @@
 # Bash Aliases 
 
+# Python hack.
+alias python=python3
+
 # Papers directory.
 alias p1='pushd ~/Papers > /dev/null'
 
