@@ -46,6 +46,9 @@ function sshXL() {
   ssh -XL localhost:$port:localhost:$port $dst
 }
 
+# Xpra X Forwarding
+alias xpra_start="PATH='/usr/lib/xorg:$PATH' xpra start"
+
 # XClip on Linux
 if hash xclip 2>/dev/null; then
   alias setclip="xclip -selection c"
