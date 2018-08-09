@@ -211,6 +211,9 @@ export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/.mujoco/mjpro150/bin
 export PATH="$PATH:~/.local/bin"
 export PATH=$HOME/local/bin:$PATH
 
+# Xpra
+export PATH="$PATH:/usr/lib/xorg"
+
 # OpenCV Support on Grail Lab Machines.
 # if [ -d $IM_DIR ]; then  
 #   # Check for an OpenCV Installation.

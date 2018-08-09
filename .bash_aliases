@@ -1,7 +1,7 @@
 # Bash Aliases 
 
 # Python hack.
-alias python=python3
+alias p3=python3
 
 # Papers directory.
 alias p1='pushd ~/Papers > /dev/null'
@@ -54,6 +54,12 @@ if hash xclip 2>/dev/null; then
   alias setclip="xclip -selection c"
   alias getclip="xclip -selection c -o"
 fi
+
+# Xpra on Linux
+function xpra_start() {
+  export DISPLAY=$1
+  xpra start $1
+}
 
 ### NVIDIA Related
 # Usage: `check libcuda`, `check libcudart`, `check libcudnn`.
