@@ -86,6 +86,12 @@ fi
 # Variables
 ####
 
+# Python
+if [[ `uname` == 'Darwin' ]]; then
+  export PATH=/Users/josephz/Library/Python/2.7/bin:$PATH
+fi
+
+
 # SRIO
 DEVD=~/Development
 if [[ `uname` == 'Linux' ]]; then
@@ -260,6 +266,7 @@ function scp-via-pem() {
 ####
 # Aliases
 ####
+alias ls="ls -G"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -alCF'
