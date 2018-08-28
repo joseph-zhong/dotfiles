@@ -187,7 +187,7 @@ if [ -f  ~/torch/install/bin/torch-activate ]; then
 fi
 
 # CUDA 
-export CUDA_HOME=/usr/local/cuda-9.1
+export CUDA_HOME=/usr/local/cuda
 export DYLD_LIBRARY_PATH="$CUDA_HOME/lib64":$DYLD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$DYLD_LIBRARY_PATH
 export PATH=$DYLD_LIBRARY_PATH:$PATH
