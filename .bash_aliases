@@ -16,7 +16,7 @@ alias p1='pushd $PAPERS > /dev/null'
 alias df1='pushd $DOTFILES > /dev/null'
 
 # Experiments directory.
-alias je1='pushd $GOOGLE_DRIVE/personal/experiments > /dev/null'
+alias je1='pushd $GOOGLE_DRIVE/Work/personal/experiments > /dev/null'
 
 # Cloud directories.
 alias db1='pushd ~/Dropbox/ > /dev/null'
