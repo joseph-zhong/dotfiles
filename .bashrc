@@ -107,7 +107,7 @@ export PYTHONPATH="${PYTHONPATH}:$WSD/git/ml/personal/jzhong/experiments/2018/py
 export PAPERS=~/Papers
 export DOTFILES=~/dotfiles
 export DROPBOX=~/Dropbox
-export GOOGLE_DRIVE="~/GoogleDrive"
+export GOOGLE_DRIVE=~/GoogleDrive
 export UW_DIR=$DROPBOX/UW
 
 ### CSE.
