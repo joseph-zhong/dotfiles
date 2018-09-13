@@ -6,27 +6,30 @@ alias p2=python2.7
 alias python=python3
 alias ipython3="python3 -m IPython"
 
+###
+# Directories
+###
 # Papers directory.
-alias p1='pushd ~/Papers > /dev/null'
+alias p1='pushd $PAPERS > /dev/null'
 
 # Dotfiles directory.
-alias df1='pushd ~/dotfiles > /dev/null'
+alias df1='pushd $DOTFILES > /dev/null'
 
 # Experiments directory.
-alias je1='pushd $DEVD/personal/experiments > /dev/null'
+alias je1='pushd $GOOGLE_DRIVE/personal/experiments > /dev/null'
+
+# Cloud directories.
+alias db1='pushd ~/Dropbox/ > /dev/null'
+alias gd1='pushd ~/$GOOGLE_DRIVE/ > /dev/null'
 
 if [[ `uname` == 'Linux' ]]; then
   # DATA directory.
   alias DATA='pushd /media/josephz/Data/ > /dev/null'
-
 fi
 
 # REVIEW josephz: Must find an OSX equivalent feature.
 # Git Diff tool. 
 alias gdif='git difftool -t meld -d'
-
-# Dropbox directory.
-alias db1='pushd ~/Dropbox/ > /dev/null'
 
 ###
 # CMake

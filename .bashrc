@@ -104,14 +104,10 @@ export PYTHONPATH="${PYTHONPATH}:$WSD/git/ml/framework/pymod"
 export PYTHONPATH="${PYTHONPATH}:$WSD/git/ml/personal/jzhong/experiments/2018/py/ml/computer_vision_utils"
 
 # Development Directories
-export MLD=$WSD/git/src/common/ml/pymod/surroundio/ml
-export MD=$WSD/git/src/common/ml/pymod/surroundio/ml/model
-export DD=$WSD/git/src/common/ml/pymod/surroundio/ml/data
-export TBD=$WSD/var/shared/shared/data/ml/tb
- 
 export PAPERS=~/Papers
 export DOTFILES=~/dotfiles
 export DROPBOX=~/Dropbox
+export GOOGLE_DRIVE="~/GoogleDrive"
 export UW_DIR=$DROPBOX/UW
 
 ### CSE.
