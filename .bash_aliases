@@ -2,7 +2,7 @@
 
 # Python hacks.
 alias p3=python3
-alias p2=python2
+alias p2=python2.7
 alias python=python3
 alias ipython3="python3 -m IPython"
 
@@ -12,14 +12,18 @@ alias p1='pushd ~/Papers > /dev/null'
 # Dotfiles directory.
 alias df1='pushd ~/dotfiles > /dev/null'
 
+# Experiments directory.
+alias je1='pushd $DEVD/personal/experiments > /dev/null'
+
 if [[ `uname` == 'Linux' ]]; then
   # DATA directory.
   alias DATA='pushd /media/josephz/Data/ > /dev/null'
 
-  # REVIEW josephz: Must find an OSX equivalent feature.
-  # Git Diff tool. 
-  alias gdif='git difftool -t meld -d'
 fi
+
+# REVIEW josephz: Must find an OSX equivalent feature.
+# Git Diff tool. 
+alias gdif='git difftool -t meld -d'
 
 # Dropbox directory.
 alias db1='pushd ~/Dropbox/ > /dev/null'
@@ -52,10 +56,13 @@ function sshXL() {
 # Xpra X Forwarding
 alias xpra_start="PATH='/usr/lib/xorg:$PATH' xpra start"
 
-# XClip on Linux
+# XClip on Linux and pbcopy/paste on OSX
 if hash xclip 2>/dev/null; then
   alias setclip="xclip -selection c"
   alias getclip="xclip -selection c -o"
+elif [[ `uname` == 'Darwin' ]]; then
+  alias setclip="pbcopy"
+  alias getclip="pbpaste"
 fi
 
 # Xpra on Linux
