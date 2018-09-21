@@ -88,46 +88,17 @@ alias deep-agent='pushd ~/personal/ws/deep-trading-agent > /dev/null'
 ####
 alias JOSEPHZ='pushd $JOSEPHZ > /dev/null'
 alias UW='pushd $UW_DIR > /dev/null'
-alias Stanford='pushd ~/Dropbox/Stanford > /dev/null'
-alias CMU='pushd ~/Dropbox/CMU > /dev/null'
 
 ####
 # Classes
 ####
-alias CS224N='pushd ~/Dropbox/Stanford/CS224N > /dev/null'
-alias PHIL240='pushd ~/Dropbox/UW/PHIL240 > /dev/null'
-alias CSE421='pushd ~/Dropbox/UW/CSE421 > /dev/null'
-alias CSE490R='pushd ~/Dropbox/UW/CSE490R > /dev/null'
-alias CSE599='pushd $DRL_DIR > /dev/null'
-
-### CSE490R Robotics.
-alias robo='pushd $UW_DIR/CSE490R/labs > /dev/null'
-alias ssh-nvidia='ssh nvidia@10.42.0.1'
-alias scp-to-nvidia='scp_to_nvidia()'
-alias scp-from-nvidia='scp_from_nvidia()'
-alias src-devel='source $ROS/devel/setup.bash'
-
-function scp_to_nvidia() {
-  cmd=scp -vr $1 nvidia@10.42.0.1:~/catkin_ws/src/lab2/src
-  echo "Running " $cmd
-}
-
-function scp_from_nvidia() {
-  cmd="scp -vr nvidia@10.42.0.1:~/catkin_ws/src/lab2/src/$1 ."
-}
-
-function set_robot() {
-  if [ $1 == 'localhost' ]; then 
-    export ROS_MASTER_URI=http://localhost:11311
-    unset ROS_IP
-  else 
-    export ROS_MASTER_URI=http://10.42.0.1:11311
-  fi
-  echo 'ROS_MASTER_URI set to ' $ROS_MASTER_URI
-}
-
-### CSE473 TA.
-alias CSE473='pushd $CSE473 > /dev/null'
+if [ -d $SCHOOL ]; then
+  for fname in $(ls -d $SCHOOL/*/); do 
+    class=$(basename $fname)
+    alias $class='pushd $SCHOOL/'$class' > /dev/null'
+  done
+fi
+alias CS224N='pushd $UNIVERSITY/Stanford/CS224N > /dev/null'
 
 ### GRAIL.
 if [[ ! -f "~/.grail_aliases" ]]; then

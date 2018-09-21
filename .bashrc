@@ -108,7 +108,9 @@ export DOTFILES=~/dotfiles
 export DROPBOX=~/Dropbox
 export GOOGLE_DRIVE=~/GoogleDrive
 export PAPERS=$GOOGLE_DRIVE/Papers
-export UW_DIR=$DROPBOX/UW
+export UNIVERSITY=$GOOGLE_DRIVE/University
+export UW_DIR=$UNIVERSITY/UW
+export SCHOOL=$UW_DIR/2018-19 
 
 ### CSE.
 if [[ `hostname` == *'.cs.washington.edu' ]]; then
@@ -215,23 +217,6 @@ export PATH=$HOME/local/bin:$PATH
 
 # Xpra
 export PATH="$PATH:/usr/lib/xorg"
-
-# OpenCV Support on Grail Lab Machines.
-# if [ -d $IM_DIR ]; then  
-#   # Check for an OpenCV Installation.
-#   if [ -d /usr/local/packages/opencv-3.1 ]; then
-#     opencv_so=/usr/local/packages/opencv-3.1/lib/python2.7/site-packages/cv2.so
-#   elif [ -d /usr/local/opencv34 ]; then
-#     opencv_so=/usr/local/opencv34/lib/python2.7/site-packages/cv2.so
-#   fi
-# 
-#   # Symblink the cv2 installation to each virtualenv.
-#  for venv in $IM_DIR/infra/virtualenv/*/
-#  do 
-#     ln -fs $opencv_so \
-#       $venv/lib/python2.7/site-packages/cv2.so 
-#   done
-# fi
 
 ###
 # Keras
