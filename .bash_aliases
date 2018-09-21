@@ -19,15 +19,14 @@ alias df1='pushd $DOTFILES > /dev/null'
 alias je1='pushd $GOOGLE_DRIVE/Work/personal/experiments > /dev/null'
 
 # Cloud directories.
-alias db1='pushd ~/Dropbox/ > /dev/null'
-alias gd1='pushd ~/$GOOGLE_DRIVE/ > /dev/null'
+alias db1='pushd $DROPBOX/ > /dev/null'
+alias gd1='pushd $GOOGLE_DRIVE/ > /dev/null'
 
 if [[ `uname` == 'Linux' ]]; then
   # DATA directory.
   alias DATA='pushd /media/josephz/Data/ > /dev/null'
 fi
 
-# REVIEW josephz: Must find an OSX equivalent feature.
 # Git Diff tool. 
 alias gdif='git difftool -t meld -d'
 
