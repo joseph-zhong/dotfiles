@@ -29,6 +29,7 @@
 	email = josephz@cs.washington.edu 
 [core]
 	editor = /usr/bin/vim
+	excludesfile = /Users/josephz/.gitignore_global
 [push]
 	default = simple
 [filter "lfs"]
