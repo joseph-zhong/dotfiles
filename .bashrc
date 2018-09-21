@@ -104,10 +104,10 @@ export PYTHONPATH="${PYTHONPATH}:$WSD/git/ml/framework/pymod"
 export PYTHONPATH="${PYTHONPATH}:$WSD/git/ml/personal/jzhong/experiments/2018/py/ml/computer_vision_utils"
 
 # Development Directories
-export PAPERS=~/Papers
 export DOTFILES=~/dotfiles
 export DROPBOX=~/Dropbox
 export GOOGLE_DRIVE=~/GoogleDrive
+export PAPERS=$GOOGLE_DRIVE/Papers
 export UW_DIR=$DROPBOX/UW
 
 ### CSE.
