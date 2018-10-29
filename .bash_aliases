@@ -3,6 +3,7 @@
 # Python hacks.
 alias p3=python3
 alias p2=python2.7
+alias python2=python2.7
 alias python=python3
 alias ipython3="python3 -m IPython"
 
@@ -98,6 +99,7 @@ if [ -d $SCHOOL ]; then
     alias $class='pushd $SCHOOL/'$class' > /dev/null'
   done
 fi
+alias SCHOOL='pushd $SCHOOL > /dev/null'
 alias CS224N='pushd $UNIVERSITY/Stanford/CS224N > /dev/null'
 
 ### GRAIL.
