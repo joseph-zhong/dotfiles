@@ -48,6 +48,7 @@ function cbuild() {
 ####
 # Misc
 ####
+alias dict='cat /usr/share/dict/words'
 alias activate='source bin/activate'
 
 function sshXL() {
