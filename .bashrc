@@ -120,6 +120,9 @@ fi
 export DRL_DIR=$UW_DIR/CSE599G1/hw/drl_hw1
 export PYTHONPATH="$DRL_DIR:$PYTHONPATH"
 
+### Lip Reading Project.
+export PYTHONPATH="$GOOGLE_DRIVE/Work/personal/experiments/py/ml/lipreading/LipReading:$PYTHONPATH"
+export LIP_READING_WS_PATH="$GOOGLE_DRIVE/Work/personal/experiments/py/ml/lipreading/LipReading"
 
 ### GRAIL.
 hname=$(hostname | cut -d "." -f1)
