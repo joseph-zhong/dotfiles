@@ -122,7 +122,12 @@ export PYTHONPATH="$DRL_DIR:$PYTHONPATH"
 
 ### Lip Reading Project.
 export PYTHONPATH="$GOOGLE_DRIVE/Work/personal/experiments/py/ml/lipreading/LipReading:$PYTHONPATH"
-export LIP_READING_WS_PATH="$GOOGLE_DRIVE/Work/personal/experiments/py/ml/lipreading/LipReading"
+
+if [[ `uname` == 'Darwin' ]]; then 
+  export LIP_READING_WS_PATH="$GOOGLE_DRIVE/Work/personal/experiments/py/ml/lipreading/LipReading"
+else
+  export LIP_READING_WS_PATH="$WSD/git/ml/personal/experiments/py/ml/lipreading/LipReading"
+fi
 
 ### GRAIL.
 hname=$(hostname | cut -d "." -f1)
