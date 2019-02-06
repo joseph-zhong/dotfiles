@@ -89,6 +89,7 @@ fi
 # Python
 if [[ `uname` == 'Darwin' ]]; then
   export PATH=/Users/josephz/Library/Python/2.7/bin:$PATH
+  export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 fi
 
 
@@ -129,8 +130,8 @@ export PYTHONPATH="$DRL_DIR:$PYTHONPATH"
 # export PYTHONPATH="$LIP_READING_WS_PATH:$PYTHONPATH"
 
 ### Temporary
-export CP_CHALLENGE_WS_PATH="$WSD/git/ml/personal/jzhong/experiments/py/ml/objdet/cp"
-export PYTHONPATH="$CP_CHALLENGE_WS_PATH:$PYTHONPATH" 
+
+export PYTHONPATH="~/GoogleDrive/University/UW/2018-19/CSE481I/singing-style-transfer:$PYTHONPATH" 
 
 ### GRAIL.
 hname=$(hostname | cut -d "." -f1)
@@ -202,6 +203,13 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$DYLD_LIBRARY_PATH
 export PATH=$DYLD_LIBRARY_PATH:$PATH
 export PATH=$CUDA_HOME/bin:$PATH
 
+# Intel
+export PATH=/opt/intel/bin:$PATH
+
+# add MKL and the compiler libs to the path
+export LD_LIBRARY_PATH=/opt/intel/mkl/lib/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/opt/intel/lib/:$LD_LIBRARY_PATH
+
 # MySQL
 export PATH=$PATH:/usr/local/mysql/bin
 
@@ -225,6 +233,15 @@ export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/.mujoco/mjpro150/bin
 # Local Bin
 export PATH="$PATH:~/.local/bin"
 export PATH=$HOME/local/bin:$PATH
+
+###
+# GCloud
+###
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/josephz/Downloads/gcloud/google-cloud-sdk/path.bash.inc' ]; then . '/Users/josephz/Downloads/gcloud/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/josephz/Downloads/gcloud/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/josephz/Downloads/gcloud/google-cloud-sdk/completion.bash.inc'; fi
 
 # Xpra
 export PATH="$PATH:/usr/lib/xorg"
