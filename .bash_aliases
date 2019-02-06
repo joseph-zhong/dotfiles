@@ -60,6 +60,8 @@ function sshXL() {
 # Xpra X Forwarding
 alias xpra_start="PATH='/usr/lib/xorg:$PATH' xpra start"
 
+### Linux/OSX Thingies
+### set/get clip
 # XClip on Linux and pbcopy/paste on OSX
 if hash xclip 2>/dev/null; then
   alias setclip="xclip -selection c"
@@ -69,11 +71,16 @@ elif [[ `uname` == 'Darwin' ]]; then
   alias getclip="pbpaste"
 fi
 
-# Xpra on Linux
+### Xpra on Linux
 function xpra_start() {
   export DISPLAY=$1
   xpra start $1
 }
+
+### Open/Xdg-open
+if [[ `uname` != "Darwin" ]]; then
+  alias open='xdg-open'
+fi
 
 ### NVIDIA Related
 # Usage: `check libcuda`, `check libcudart`, `check libcudnn`.
