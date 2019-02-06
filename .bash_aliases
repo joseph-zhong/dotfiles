@@ -5,7 +5,7 @@ alias p3=python3
 alias p2=python2.7
 alias python2=python2.7
 alias ipython3="python3 -m IPython"
-alias bpython3="python3 -m bython"
+alias bpython3="python3 -m bpython"
 
 ###
 # Directories
