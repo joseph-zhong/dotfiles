@@ -6,6 +6,7 @@ alias p2=python2.7
 alias python2=python2.7
 alias ipython3="python3 -m IPython"
 alias bpython3="python3 -m bpython"
+alias venv3="python3 -m venv"
 
 ###
 # Directories
@@ -86,6 +87,11 @@ fi
 # Usage: `check libcuda`, `check libcudart`, `check libcudnn`.
 function lib_installed() { /sbin/ldconfig -N -v $(sed 's/:/ /' <<< $LD_LIBRARY_PATH) 2>/dev/null | grep $1; }
 function check() { lib_installed $1 && echo "$1 is installed" || echo "ERROR: $1 is NOT installed"; }
+
+# Setting up LD_LIBRARY_PATH.
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
+export CUDA_HOME=/usr/local/cuda
+export PATH="/usr/local/cuda/bin:$PATH"
 
 ####
 # Side Stuff
