@@ -1,5 +1,8 @@
 # Bash Aliases 
 
+# tmp
+alias v1="pushd /mnt/sbp/home/josephz/ws/git/VideoSummarization > /dev/null"
+
 # Python hacks.
 alias p3=python3
 alias p2=python2.7
