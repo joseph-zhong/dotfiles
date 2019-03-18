@@ -122,16 +122,8 @@ export DRL_DIR=$UW_DIR/CSE599G1/hw/drl_hw1
 export PYTHONPATH="$DRL_DIR:$PYTHONPATH"
 
 ### Lip Reading Project.
-# if [[ `uname` == 'Darwin' ]]; then 
-#   export LIP_READING_WS_PATH="$GOOGLE_DRIVE/Work/personal/experiments/py/ml/lipreading/LipReading"
-# else
-#   export LIP_READING_WS_PATH="$WSD/git/ml/personal/jzhong/experiments/py/ml/lipreading/LipReading"
-# fi
-# export PYTHONPATH="$LIP_READING_WS_PATH:$PYTHONPATH"
-
-### Temporary
-
 export PYTHONPATH="~/GoogleDrive/University/UW/2018-19/CSE481I/singing-style-transfer:$PYTHONPATH" 
+export PYTHONPATH="~/ws/git/VideoSummarization:$PYTHONPATH"
 
 ### GRAIL.
 hname=$(hostname | cut -d "." -f1)
