@@ -5,7 +5,6 @@
 .idea/
 
 ### Private setup.
-.private_aliases
 .privaterc
 
 ### SSH Keys
