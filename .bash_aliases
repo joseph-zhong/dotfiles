@@ -127,7 +127,9 @@ fi
 ### Secret Stuffs.
 if [ -h ~/.private_aliases ]; then
   for fname in ~/.private_aliases/*; do
-    source $fname
+    if [[ "$fname" != *README.md ]]; then
+      source $fname
+    fi
   done
 fi
 
