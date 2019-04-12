@@ -84,14 +84,18 @@ fi
 
 #####
 # Variables
-####
+#####
 
+#### Path
 # Python
 if [[ `uname` == 'Darwin' ]]; then
   export PATH=/Users/josephz/Library/Python/2.7/bin:$PATH
   export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 fi
 
+# CTRL-Labs
+export PATH=$HOME/bin:$PATH
+export MPLBACKEND=AGG
 
 # SRIO
 DEVD=~/Development
@@ -103,6 +107,11 @@ fi
 export PATH=$WSD/git/src/bin:$PATH
 export PYTHONPATH="${PYTHONPATH}:$WSD/git/ml/framework/pymod"
 export PYTHONPATH="${PYTHONPATH}:$WSD/git/ml/personal/jzhong/experiments/2018/py/ml/computer_vision_utils"
+
+# Brew
+if [[ `uname` == 'Darwin' ]]; then
+  export PATH="/usr/local/opt/gettext/bin:$PATH"
+fi
 
 # Development Directories
 export DOTFILES=~/dotfiles
@@ -250,6 +259,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/.local/lib
 
 # Anaconda 3
 export PATH=~/anaconda3/bin:$PATH
+export PATH=~/miniconda3/bin:$PATH
 
 ###
 # PEM
