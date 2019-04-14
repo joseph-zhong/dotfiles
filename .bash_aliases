@@ -125,6 +125,7 @@ if [[ ! -f "~/.grail_aliases" ]]; then
 fi
 
 ### Secret Stuffs.
+alias pa1="pushd ~/.private_aliases > /dev/null"
 if [ -h ~/.private_aliases ]; then
   for fname in ~/.private_aliases/*; do
     if [[ "$fname" != *README.md ]]; then
