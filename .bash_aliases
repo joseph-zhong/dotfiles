@@ -8,14 +8,14 @@ alias p3=python3
 alias p2=python2.7
 alias python2=python2.7
 alias ipython3="python3 -m IPython"
-alias bpython3="python3 -m bpython"
+alias bpython="python3 -m bpython"
 alias venv3="python3 -m venv"
 
 ###
 # Directories
 ###
 # Papers directory.
-alias p1='pushd $PAPERS > /dev/null'
+alias pp1='pushd $PAPERS > /dev/null'
 
 # Dotfiles directory.
 alias df1='pushd $DOTFILES > /dev/null'
