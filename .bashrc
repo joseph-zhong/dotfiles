@@ -94,6 +94,7 @@ if [[ `uname` == 'Darwin' ]]; then
 fi
 
 # CTRL-Labs
+export WS_PATH=$HOME/work
 export PATH=$HOME/bin:$PATH
 export MPLBACKEND=AGG
 
@@ -130,7 +131,7 @@ fi
 export DRL_DIR=$UW_DIR/CSE599G1/hw/drl_hw1
 export PYTHONPATH="$DRL_DIR:$PYTHONPATH"
 
-### Lip Reading Project.
+### Misc Projects.
 export PYTHONPATH="~/GoogleDrive/University/UW/2018-19/CSE481I/singing-style-transfer:$PYTHONPATH" 
 export PYTHONPATH="~/ws/git/VideoSummarization:$PYTHONPATH"
 
