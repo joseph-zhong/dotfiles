@@ -54,7 +54,7 @@ function cbuild() {
 ####
 alias dict='cat /usr/share/dict/words'
 alias activate='source bin/activate'
-alias conda_d='source deactivate'
+alias c_deactivate='source deactivate'
 
 function sshXL() {
   port=$1
