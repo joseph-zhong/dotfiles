@@ -81,6 +81,10 @@ if [[ `uname` == 'Darwin' ]]; then
   fi
 fi
 
+##
+# fzf completion
+##
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 #####
 # Variables
