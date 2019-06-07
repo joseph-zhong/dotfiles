@@ -1,8 +1,5 @@
 # Bash Aliases 
 
-# tmp
-alias v1="pushd /mnt/sbp/home/josephz/ws/git/VideoSummarization > /dev/null"
-
 # Python hacks.
 alias p3=python3
 alias p2=python2.7
@@ -38,7 +35,7 @@ alias gdif='git difftool -t meld -d'
 ###
 # CMake
 ###
-function cbuild() {
+cbuild() {
   build=$1
   target=$2
   nproc=$(nproc --all)
@@ -55,15 +52,30 @@ function cbuild() {
 alias dict='cat /usr/share/dict/words'
 alias activate='source bin/activate'
 alias c_deactivate='source deactivate'
+alias grep='grep -i --line-buffered --exclude=\*svn\* --color=auto'
+alias antigrep='grep --color=never -v'
+alias rebash='source ~/.bashrc'
 
-function sshXL() {
+# Locating code-snippets.
+highlight () {
+    GREP_COLOR=34 grep --line-buffered --exclude=\*svn\* --color=auto -i --line-buffered --color=always -E "${1}|$"
+}
+loc() {
+    find . -iname "*$1*" 2>/dev/null | antigrep "\.pyc" | antigrep "\./vendor/" | antigrep "\./go-build/\.go/" | antigrep "./node_modules/" | highlight $1
+}
+shallowloc() {
+    find . -iname "*$1*" -maxdepth 3 2>/dev/null | antigrep "\.pyc" | antigrep "\./vendor/" | antigrep "\./go-build/\.go/" | antigrep "./node_modules/" | highlight $1
+}
+deeploc() {
+    find . -iname "*$1*" -maxdepth 6 2>/dev/null | antigrep "\.pyc" | antigrep "\./vendor/" | antigrep "\./go-build/\.go/" | antigrep "./node_modules/" | highlight $1
+}
+
+# SSH related.
+sshXL() {
   port=$1
   dst=$2
   ssh -XL localhost:$port:localhost:$port $dst
 }
-
-# Xpra X Forwarding
-alias xpra_start="PATH='/usr/lib/xorg:$PATH' xpra start"
 
 ### Linux/OSX Thingies
 ### set/get clip
@@ -82,6 +94,9 @@ function xpra_start() {
   xpra start $1
 }
 
+# Xpra X Forwarding
+alias xpra_start="PATH='/usr/lib/xorg:$PATH' xpra start"
+
 ### Open/Xdg-open
 if [[ `uname` != "Darwin" ]]; then
   alias open='xdg-open'
@@ -89,18 +104,18 @@ fi
 
 ### NVIDIA Related
 # Usage: `check libcuda`, `check libcudart`, `check libcudnn`.
-function lib_installed() { /sbin/ldconfig -N -v $(sed 's/:/ /' <<< $LD_LIBRARY_PATH) 2>/dev/null | grep $1; }
-function check() { lib_installed $1 && echo "$1 is installed" || echo "ERROR: $1 is NOT installed"; }
+lib_installed() { 
+  /sbin/ldconfig -N -v $(sed 's/:/ /' <<< $LD_LIBRARY_PATH) 2>/dev/null | grep $1;
+}
+check() { 
+  lib_installed $1 && echo "$1 is installed" || echo "ERROR: $1 is NOT installed"; 
+}
 
-# Setting up LD_LIBRARY_PATH.
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
-export CUDA_HOME=/usr/local/cuda
-export PATH="/usr/local/cuda/bin:$PATH"
+
 
 ####
 # Side Stuff
 ###
-alias deep-agent='pushd ~/personal/ws/deep-trading-agent > /dev/null'
 
 ####
 # School Related
