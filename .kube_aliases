@@ -1,5 +1,5 @@
 # Kube Aliases
 
 ## Get Pods with creation date 
-alias kubectl_get_pods_with_creationTimestamp="kubectl get pods -n research -o go-template --template '{{range .items}}{{.metadata.name}} {{.metadata.creationTimestamp}}{{'\n'}}{{end}}"
+alias kubectl_get_pods_with_creationTimestamp="kubectl get pods -n research -o go-template --template '{{range .items}}{{.metadata.name}} {{.metadata.creationTimestamp}}{{\"\\n\"}}{{end}}'"
 
