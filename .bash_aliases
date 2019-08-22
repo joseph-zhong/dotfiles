@@ -111,7 +111,13 @@ check() {
   lib_installed $1 && echo "$1 is installed" || echo "ERROR: $1 is NOT installed"; 
 }
 
-
+####
+# Kubernetes.
+####
+alias ka1="pushd ~/.kube_aliases > /dev/null/"
+if [ -h ~/.kube_aliases ]; then
+  source ~/.kube_aliases
+fi
 
 ####
 # Side Stuff
