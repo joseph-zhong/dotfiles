@@ -120,6 +120,11 @@ if [ -h ~/.kube_aliases ]; then
 fi
 
 ####
+# Docker.
+####
+alias docker_image_prune="docker images | grep weeks | awk '{print $3}' | xargs docker rmi -f"
+
+####
 # Side Stuff
 ###
 
