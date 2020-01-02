@@ -1,4 +1,7 @@
 #! /usr/bin/env python
+"""
+Adapted from https://github.com/sr228822/srpub
+"""
 
 import os
 import subprocess, math, time, sys, datetime, re
