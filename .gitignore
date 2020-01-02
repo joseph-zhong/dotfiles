@@ -9,3 +9,8 @@
 
 ### SSH Keys
 .ssh/id_rsa
+
+### Misc.
+**.pyc
+**/__pycache__
+
