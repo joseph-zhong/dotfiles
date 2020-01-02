@@ -180,6 +180,14 @@ if [[ -f /opt/ros/kinetic/setup.bash ]]; then
 fi
 
 # History
+# Use prompt command to log all bash to files in .logs
+mkdir -p ~/.logs/
+export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(history 1)" >> ~/.logs/bash-history-${myhostname}-$(date "+%Y-%m-%d").log; fi'
+alias fullhistory="cat ~/.logs/* | grep '^20' | sort"
+hist() {
+    fullhistory | grep_and $@ | tail -n 30
+}
+
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 HISTCONTROL=ignoreboth

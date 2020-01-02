@@ -29,8 +29,11 @@ if [[ `uname` == 'Linux' ]]; then
   alias DATA='pushd /media/josephz/Data/ > /dev/null'
 fi
 
-# Git Diff tool. 
+# Git. 
 alias gdif='git difftool -t meld -d'
+alias gs="~/.sh_utils/git_awesome_status.py"
+alias mine="git log --format=short --author='Zhong'"
+alias author_of_all_time='git log | grep Author | hist_common.py'
 
 ###
 # CMake
@@ -161,3 +164,39 @@ if [ -h ~/.private_aliases ]; then
   done
 fi
 
+
+### Other Stuffs.
+#### Search.
+alias search_source='grep --exclude=\*svn\* --exclude="*.h" --exclude="g_*" --exclude="*.pl" -iIr * -e'
+alias grep_ips="grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}'"
+
+search_and() {
+    grep -E -iIr * -e "$1.*$2|$2.*$1"
+}
+search_or() {
+    grep -E -iIr * -e "$1|$2"
+}
+grep_or() {
+    local IFS="|"; grep -i -E -e "$*";
+}
+#join () {
+#    local IFS="$1"; shift; echo "$*";
+#}
+grep_and() {
+    #local IFS="$1"; echo "$*";
+    c="awk '/$1/"
+    args=("$@")
+    for ((i=1; i<${#args[@]}; i++))
+    do
+        c="$c && /${args[i]}/"
+    done
+    c="$c'"
+    #for var in "$@"
+    #do
+    #    #c="$c /$var/"
+    #    c="$c | grep -i $var"
+    #done
+    #echo $c
+    eval $c
+    #awk '/word1/ && /word2/'
+}
