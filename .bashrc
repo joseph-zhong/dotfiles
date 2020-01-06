@@ -6,6 +6,14 @@
 source ~/.bash_git
 export GIT_PS1_SHOWDIRTYSTATE=1
 
+# hg.
+function parse_hg_dirty {
+  [[ $( hg status 2> /dev/null ) != "" ]] && echo "*" 
+}
+function parse_hg_branch {
+  hg bookmark | grep '*' | cut -d ' ' -f3 2> /dev/null | sed -e "s/\(.*\)/[\1$(parse_hg_dirty)]/"
+}
+
 # If not running interactively, don't do anything.
 [ -z "$PS1" ] && return
 
@@ -36,7 +44,7 @@ fi
 
 # Get repo info
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[00;34m\]\w\[\033[00m\]$(__git_ps1 " \[\033[01;92m\][%s]")\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[00;34m\]\w\[\033[00m\] $(parse_hg_branch)$(__git_ps1 " \[\033[01;92m\][%s]")\[\033[00m\]\$ '
     PS2="> "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
