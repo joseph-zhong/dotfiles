@@ -11,7 +11,8 @@ function parse_hg_dirty {
   [[ $( hg status 2> /dev/null ) != "" ]] && echo "*" 
 }
 function parse_hg_branch {
-  hg bookmark | grep '*' | cut -d ' ' -f3 2> /dev/null | sed -e "s/\(.*\)/[\1$(parse_hg_dirty)]/"
+  [[ $( hg status 2> /dev/null ) != "" ]] && \
+      hg bookmark | grep '*' | cut -d ' ' -f3 2> /dev/null | sed -e "s/\(.*\)/[\1$(parse_hg_dirty)]/"
 }
 
 # If not running interactively, don't do anything.
