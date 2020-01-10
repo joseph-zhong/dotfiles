@@ -114,6 +114,7 @@ check() {
 ####
 # Kubernetes.
 ####
+alias kctl="kubectl"
 alias ka1="pushd ~/.kube_aliases > /dev/null/"
 if [ -h ~/.kube_aliases ]; then
   source ~/.kube_aliases
@@ -122,7 +123,7 @@ fi
 ####
 # Docker.
 ####
-alias docker_image_prune="docker images | grep weeks | awk '{print $3}' | xargs docker rmi -f"
+alias docker-prune-images="docker images | grep weeks | awk '{print $3}' | xargs docker rmi -f"
 
 ####
 # Side Stuff
