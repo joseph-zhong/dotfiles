@@ -158,7 +158,7 @@ fi
 alias pa1="pushd ~/.private_aliases > /dev/null/"
 if [ -h ~/.private_aliases ]; then
   for fname in ~/.private_aliases/*; do
-    if [[ "$fname" != *README.md ]]; then
+    if [[ -f $fname && "$fname" != *README.md ]]; then
       source $fname
     fi
   done

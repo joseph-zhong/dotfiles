@@ -91,6 +91,12 @@ fi
 #####
 
 #### Path
+# Private Path
+if [[ -d ~/.private_aliases/bin/ ]]; then
+  export PATH=$HOME/.private_aliases/bin:$PATH
+fi
+
+
 # Python
 if [[ `uname` == 'Darwin' ]]; then
   export PATH=/Users/josephz/Library/Python/2.7/bin:$PATH
