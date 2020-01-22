@@ -100,6 +100,7 @@ fi
 # CTRL-Labs
 export WS_PATH=$HOME/work
 export PATH=$HOME/bin:$PATH
+export PATH=$WS_PATH/ctrl-service/bin:$PATH
 export MPLBACKEND=AGG
 
 # SRIO
@@ -189,8 +190,8 @@ shopt -s histappend
 shopt -s checkwinsize
 
 # Loads NVM
-export NVM_DIR=~/.nvm
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Yarn
@@ -281,7 +282,7 @@ function scp-via-pem() {
 ####
 # Aliases
 ####
-alias ls="ls -G"
+alias ls="ls -Gh"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -alCF'
