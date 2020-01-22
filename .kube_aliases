@@ -3,3 +3,10 @@
 ## Get Pods with creation date 
 alias kubectl_get_pods_with_creationTimestamp="kubectl get pods -n research -o go-template --template '{{range .items}}{{.metadata.name}} {{.metadata.creationTimestamp}}{{\"\\n\"}}{{end}}'"
 
+## Get Pods with grep pattern.
+grep_pods() {
+    grep_pattern=$1
+    kubectl -n jobs get pods | grep ${grep_pattern} | awk '{print $1}'  
+}
+
+
