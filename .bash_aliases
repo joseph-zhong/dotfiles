@@ -123,7 +123,7 @@ fi
 ####
 # Docker.
 ####
-alias docker-prune-images="docker images | grep weeks | awk '{print $3}' | xargs docker rmi -f"
+alias prune-docker-images="docker images | grep weeks | awk '{print $3}' | xargs docker rmi -f"
 
 ####
 # Side Stuff
