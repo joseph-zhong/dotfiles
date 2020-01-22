@@ -6,6 +6,15 @@
 source ~/.bash_git
 export GIT_PS1_SHOWDIRTYSTATE=1
 
+# hg.
+function parse_hg_dirty {
+  [[ $( hg status 2> /dev/null ) != "" ]] && echo "*" 
+}
+function parse_hg_branch {
+  [[ $( hg status 2> /dev/null ) != "" ]] && \
+      hg bookmark | grep '*' | cut -d ' ' -f3 2> /dev/null | sed -e "s/\(.*\)/[\1$(parse_hg_dirty)]/"
+}
+
 # If not running interactively, don't do anything.
 [ -z "$PS1" ] && return
 
@@ -36,7 +45,7 @@ fi
 
 # Get repo info
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[00;34m\]\w\[\033[00m\]$(__git_ps1 " \[\033[01;92m\][%s]")\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[00;34m\]\w\[\033[00m\]$(parse_hg_branch)$(__git_ps1 " \[\033[01;92m\][%s]")\[\033[00m\]\$ '
     PS2="> "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -91,6 +100,12 @@ fi
 #####
 
 #### Path
+# Private Path
+if [[ -d ~/.private_aliases/bin/ ]]; then
+  export PATH=$HOME/.private_aliases/bin:$PATH
+fi
+
+
 # Python
 if [[ `uname` == 'Darwin' ]]; then
   export PATH=/Users/josephz/Library/Python/2.7/bin:$PATH
@@ -181,6 +196,14 @@ if [[ -f /opt/ros/kinetic/setup.bash ]]; then
 fi
 
 # History
+# Use prompt command to log all bash to files in .logs
+mkdir -p ~/.logs/
+export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(history 1)" >> ~/.logs/bash-history-${myhostname}-$(date "+%Y-%m-%d").log; fi'
+alias fullhistory="cat ~/.logs/* | grep '^20' | sort"
+hist() {
+    fullhistory | grep_and $@ | tail -n 30
+}
+
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 HISTCONTROL=ignoreboth
