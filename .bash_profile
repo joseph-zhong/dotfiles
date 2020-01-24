@@ -11,9 +11,6 @@ export PATH="$PATH:$HOME/bin"
 export PATH=/usr/local/bin:$PATH
 # export PATH=$PATH:/Users/Joseph/Library/Android/sdk/platform-tools/
 
-# Setting PATH for Python 2.7
-# export PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
-
 # Added by set-profile.sh on Mon Jul 31 20:31:04 PDT 2017
 # run profile if you find it for an inbound ssh session on ubuntu
 [[ -e "$HOME/.profile" ]] && . "$HOME/.profile"
@@ -26,9 +23,4 @@ export PYTHONPATH="$DRL_DIR:$PYTHONPATH"
 export PATH="/Users/josephz/anaconda3/bin:$PATH"
 
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/Users/josephz/.mujoco/mjpro150/bin
-
-# Setting PATH for Python 2.7
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
-export PATH
 
