@@ -1,0 +1,19 @@
+{
+  "shortcuts": [
+    {
+      "command": "notebook:hide-cell-outputs",
+      "keys": [
+        "O", 
+        "O"
+      ],
+      "selector": ".jp-Notebook:focus"
+    },    
+    {
+      "command": "notebook:show-cell-outputs",
+      "keys": [
+        "O"
+      ],
+      "selector": ".jp-Notebook:focus"
+    }
+  ]
+}
