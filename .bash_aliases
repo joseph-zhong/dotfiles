@@ -126,7 +126,7 @@ fi
 ####
 # Docker.
 ####
-alias prune-docker-images="docker system prune --all"
+alias prune-docker-images="docker system prune --volumes -a"
 
 ####
 # Side Stuff
