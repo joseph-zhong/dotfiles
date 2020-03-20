@@ -1,5 +1,11 @@
 # bashrc
 
+### 
+# Temporary
+###
+# Supress bash deprecation warning: https://support.apple.com/en-us/HT208050
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 ####
 # Git Prompt.
 ####
@@ -313,4 +319,3 @@ alias l='ls -alCF'
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-

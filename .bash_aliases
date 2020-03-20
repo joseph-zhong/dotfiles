@@ -126,7 +126,7 @@ fi
 ####
 # Docker.
 ####
-alias prune-docker-images="docker images | grep weeks | awk '{print $3}' | xargs docker rmi -f"
+alias prune-docker-images="docker system prune --all"
 
 ####
 # Side Stuff
