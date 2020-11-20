@@ -55,7 +55,7 @@ cbuild() {
 alias dict='cat /usr/share/dict/words'
 alias activate='source bin/activate'
 alias c_deactivate='conda deactivate'
-alias grep='grep -i --line-buffered --exclude=\*svn\* --color=auto'
+alias grep='grep -ni --line-buffered --exclude=\*svn\* --color=auto'
 alias antigrep='grep --color=never -v'
 alias rebash='source ~/.bashrc'
 
