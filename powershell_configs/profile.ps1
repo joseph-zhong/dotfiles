@@ -5,6 +5,9 @@
 # "components","functions","aliases","exports","extra" | Where-Object {Test-Path "$_.ps1"} | ForEach-Object -process {Invoke-Expression ". .\$_.ps1"}
 # Pop-Location
 
+
+Import-Module posh-git
+
 Function New-File {New-Item -ItemType file @args}
 New-Alias -Name "touch" -Value New-File
 
@@ -22,3 +25,9 @@ Function cdc { cd ~ }
 Function symblink($src, $dst) { 
     New-Item -ItemType symboliclink -Path $dst -Target $src
 }
+
+#region conda initialize
+# !! Contents within this block are managed by 'conda init' !!
+(& "C:\Users\josephz\Miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
+#endregion
+
