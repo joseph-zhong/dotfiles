@@ -18,3 +18,7 @@ Function df1 { cd ~/dotfiles/ }
 Function v1 { cd ~/.vim_runtime/ }
 
 Function cdc { cd ~ }
+
+Function symblink($src, $dst) { 
+    New-Item -ItemType symboliclink -Path $dst -Target $src
+}
