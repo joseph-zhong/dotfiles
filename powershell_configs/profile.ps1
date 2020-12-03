@@ -16,6 +16,7 @@ New-Alias -Name "cl" -Value Clear
 
 Function s2 { cd ~/work/src2 }
 Function w2 { cd ~/work/ }
+Function a1 { conda activate ctrldev }
 
 Function df1 { cd ~/dotfiles/ }
 Function v1 { cd ~/.vim_runtime/ }
