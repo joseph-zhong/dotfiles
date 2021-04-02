@@ -306,6 +306,11 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/.local/lib
 export PATH=~/anaconda3/bin:$PATH
 export PATH=~/miniconda3/bin:$PATH
 
+# Kubectl
+# source <(kubectl completion bash)
+# alias k=kubectl
+# complete -F __start_kubectl k
+
 ###
 # PEM
 ###

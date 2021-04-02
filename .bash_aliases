@@ -201,3 +201,5 @@ grep_and() {
     eval $c
     #awk '/word1/ && /word2/'
 }
+
+
