@@ -79,6 +79,7 @@ sshXL() {
   dst=$2
   ssh -XL localhost:$port:localhost:$port $dst
 }
+alias tmux="TERM=screen-256color-bce tmux"
 
 ### Linux/OSX Thingies
 ### set/get clip
