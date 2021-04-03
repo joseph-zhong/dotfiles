@@ -3,16 +3,7 @@
 ### 
 # Temporary
 ###
-# Supress bash deprecation warning: https://support.apple.com/en-us/HT208050
-export BASH_SILENCE_DEPRECATION_WARNING=1
-export DATE=$(date '+%Y-%m-%d')
-# export RESTAPI_SERVICE=http://localhost:3000
-
-# Make sure brew works without sudo
-# sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/sbin
-# chmod u+w /usr/local/bin /usr/local/lib /usr/local/sbin
-
-
+# export BASH_SILENCE_DEPRECATION_WARNING=1
 
 ####
 # Git Prompt.
@@ -125,9 +116,6 @@ if [[ `uname` == 'Darwin' ]]; then
   export PATH=/Users/josephz/Library/Python/2.7/bin:$PATH
   export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 fi
-
-# Go
-export PATH=$HOME/go/bin:$PATH
 
 # CTRL-Labs
 export WS_PATH=$HOME/work
@@ -305,11 +293,6 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/.local/lib
 # Anaconda 3
 export PATH=~/anaconda3/bin:$PATH
 export PATH=~/miniconda3/bin:$PATH
-
-# Kubectl
-# source <(kubectl completion bash)
-# alias k=kubectl
-# complete -F __start_kubectl k
 
 ###
 # PEM

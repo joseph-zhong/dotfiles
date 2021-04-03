@@ -55,7 +55,7 @@ cbuild() {
 alias dict='cat /usr/share/dict/words'
 alias activate='source bin/activate'
 alias c_deactivate='conda deactivate'
-alias grep='grep -i --line-buffered --exclude=\*svn\* --color=auto'
+alias grep='grep -ni --line-buffered --exclude=\*svn\* --color=auto'
 alias antigrep='grep --color=never -v'
 alias rebash='source ~/.bashrc'
 
@@ -79,6 +79,7 @@ sshXL() {
   dst=$2
   ssh -XL localhost:$port:localhost:$port $dst
 }
+alias tmux="TERM=screen-256color-bce tmux"
 
 ### Linux/OSX Thingies
 ### set/get clip
@@ -126,7 +127,7 @@ fi
 ####
 # Docker.
 ####
-alias prune-docker-images="docker images | grep weeks | awk '{print $3}' | xargs docker rmi -f"
+alias prune-docker-images="docker system prune --volumes -a"
 
 ####
 # Side Stuff
@@ -201,3 +202,5 @@ grep_and() {
     eval $c
     #awk '/word1/ && /word2/'
 }
+
+
