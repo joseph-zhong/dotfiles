@@ -28,4 +28,4 @@ cd dotfiles
 - [ ] Fixes a bug in the update script which creates an erroneous symblink
   to the same parent dir, e.g. (.private_aliases/ will have an additional
   .private_aliases/.private_aliases)
-
+- [ ] Automatically import VSCode (and todo: PyCharm) settings around
