@@ -10,5 +10,6 @@
                 "/data/users/josephz/www/"
             ]
         }
-    ]
+    ],
+    "files.autoSave": "onFocusChange"
 }
