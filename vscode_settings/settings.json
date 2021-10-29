@@ -1,0 +1,15 @@
+{
+    "editor.suggestSelection": "first",
+    "interactive-smartlog.pull": "arc pull",
+    "interactive-smartlog.fetch": "jf get",
+    "fb.ms-remote-connections.hosts": [
+        {
+            "hostname": "our.josephz.sb.facebook.com",
+            "folders": [
+                "/data/users/josephz/configerator/",
+                "/data/users/josephz/www/"
+            ]
+        }
+    ],
+    "files.autoSave": "onFocusChange"
+}
