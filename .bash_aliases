@@ -63,6 +63,10 @@ alias rebash='source ~/.bashrc'
 highlight () {
     GREP_COLOR=34 grep --line-buffered --exclude=\*svn\* --color=auto -i --line-buffered --color=always -E "${1}|$"
 }
+highlightgray () 
+{ 
+      GREP_COLOR='90' grep --line-buffered --exclude=\*svn\* --color=auto -i --line-buffered --color=always -E "${1}|$"
+}
 loc() {
     find . -iname "*$1*" 2>/dev/null | antigrep "\.pyc" | antigrep "\./vendor/" | antigrep "\./go-build/\.go/" | antigrep "./node_modules/" | highlight $1
 }
