@@ -154,7 +154,7 @@ fi
 # Development Directories
 export DOTFILES=~/dotfiles
 export DROPBOX=~/Dropbox
-export GOOGLE_DRIVE=~/GoogleDrive
+export GOOGLE_DRIVE=/Volumes/GoogleDrive
 export PAPERS=$GOOGLE_DRIVE/Papers
 export UNIVERSITY=$GOOGLE_DRIVE/University
 export UW_DIR=$UNIVERSITY/UW
