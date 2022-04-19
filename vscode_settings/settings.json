@@ -9,7 +9,64 @@
                 "/data/users/josephz/configerator/",
                 "/data/users/josephz/www/"
             ]
+        },
+        {
+            "hostname": "devvm4110.frc0.facebook.com",
+            "folders": [
+                "/data/users/josephz/fbsource/",
+                "/data/users/josephz/configerator/"
+            ]
+        },
+        {
+            "hostname": "devvm1822.ash0.facebook.com",
+            "folders": []
         }
     ],
-    "files.autoSave": "onFocusChange"
+    "files.autoSave": "onFocusChange",
+    "new-file-template.oncall_name": "ctrl_x",
+    "editor.minimap.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "interactive-smartlog.right-drawer-width": 946,
+    "interactive-smartlog.bottom-drawer-height": 500,
+    "interactive-smartlog.autoRunMergeDrivers": false,
+    "editor.scrollBeyondLastLine": false,
+    "editor.scrollBeyondLastColumn": 0,
+    "[cpp]": {
+        "editor.defaultFormatter": "nuclide.cpp"
+    },
+    "hg.jumpToNextConflictOnSave": "Jump On Save And Open ISL When Done",
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "terminal.integrated.scrollback": 99999,
+    "pyls.BuckFormatOnSave": true,
+    "pyls.formatAlreadyFormattedFilesOnSave": true,
+    "fb.ms-remote-connections.odtypes": [
+        {
+            "type": "ondemand_www",
+            "flavor": "default",
+            "folders": []
+        },
+        {
+            "type": "ondemand_fbcode",
+            "flavor": "default",
+            "folders": []
+        },
+        {
+            "type": "ondemand_ios",
+            "flavor": "igios_no_extensions",
+            "folders": []
+        },
+        {
+            "type": "ondemand_mobile",
+            "flavor": "default",
+            "folders": []
+        },
+        {
+            "type": "ondemand_gpu",
+            "flavor": "surreal",
+            "folders": []
+        }
+    ],
+    "terminal.integrated.defaultProfile.windows": "",
+    "window.zoomLevel": -1,
+    "editor.mouseWheelZoom": true
 }
