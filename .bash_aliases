@@ -59,6 +59,11 @@ alias grep='grep -ni --line-buffered --exclude=\*svn\* --color=auto'
 alias antigrep='grep --color=never -v'
 alias rebash='source ~/.bashrc'
 
+# VSCode Helpers.
+VSCODE="'/Users/josephz/Library/Application Support/VS Code @ FB/User'"
+alias pull-vscode='[ -d "${VSCODE}" ] && cp ${VSCODE}/*.json ${DOTFILES}/vscode_settings/'
+alias push-vscode='[ -d "${VSCODE}" ] && cp ${DOTFILES}/vscode_settings/*.json ${VSCODE}/'
+
 # Locating code-snippets.
 highlight () {
     GREP_COLOR=34 grep --line-buffered --exclude=\*svn\* --color=auto -i --line-buffered --color=always -E "${1}|$"
