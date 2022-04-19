@@ -59,7 +59,7 @@ fi
 
 # Get repo info
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[00;34m\]\w\[\033[00m\]$(parse_hg_branch)$(__git_ps1 " \[\033[01;92m\][%s]")\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[00;34m\]\w\[\033[00m\]$(parse_hg_branch " \[\033[01;92m\][%s]")$(__git_ps1 " \[\033[01;92m\][%s]")\[\033[00m\]\$ '
     PS2="> "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -154,7 +154,7 @@ fi
 # Development Directories
 export DOTFILES=~/dotfiles
 export DROPBOX=~/Dropbox
-export GOOGLE_DRIVE=~/GoogleDrive
+export GOOGLE_DRIVE=/Volumes/GoogleDrive
 export PAPERS=$GOOGLE_DRIVE/Papers
 export UNIVERSITY=$GOOGLE_DRIVE/University
 export UW_DIR=$UNIVERSITY/UW
@@ -245,16 +245,10 @@ fi
 
 # CUDA 
 export CUDA_HOME=/usr/local/cuda
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_HOME/lib64:$CUDA_HOME/extras/CUPTI/lib64
-export PATH=$DYLD_LIBRARY_PATH:$PATH
 export PATH=$CUDA_HOME/bin:$PATH
 
 # Intel
 export PATH=/opt/intel/bin:$PATH
-
-# add MKL and the compiler libs to the path
-export LD_LIBRARY_PATH=/opt/intel/mkl/lib/:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/opt/intel/lib/:$LD_LIBRARY_PATH
 
 # MySQL
 export PATH=$PATH:/usr/local/mysql/bin
@@ -264,17 +258,12 @@ export PYTHONPATH=$HOME/caffe/python:$PYTHONPATH
 
 # OpenPose 
 export OPENPOSE_ROOT=/usr/local/openpose 
-export LD_LIBRARY_PATH=$OPENPOSE_ROOT/build/src/openpose:$LD_LIBRARY_PATH
 export PATH=$OPENPOSE_ROOT/build/examples/openpose:$PATH
 
 ### PyOpenPose Python Wrapper
 # export PYTHONPATH=/usr/local/openpose/build/src/openpose:$PYTHONPATH
 export PYTHONPATH=/usr/local/PyOpenPose/build/PyOpenPoseLib:$PYTHONPATH
 # export PYTHONPATH=$OPENPOSE_ROOT:$PYTHONPATH
-
-# MuJoCo
-export LD_LIBRARY_PATH="$HOME/.mujoco/mjpro150/bin:$LD_LIBRARY_PATH"
-export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/.mujoco/mjpro150/bin
 
 # Local Bin
 export PATH="$PATH:~/.local/bin"
@@ -300,7 +289,6 @@ export PATH="$PATH:/usr/lib/xorg"
 KERAS_BACKEND=theano 
 export CPATH=$CPATH:~/.local/include
 export LIBRARY_PATH=$LIBRARY_PATH:~/.local/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/.local/lib
 
 # Anaconda 3
 export PATH=~/anaconda3/bin:$PATH
@@ -335,3 +323,24 @@ alias l='ls -alCF'
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/josephz/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/josephz/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/josephz/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/josephz/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+ALL_PROXY=fwdproxy:8080
+eval $(ssh-agent)
+ssh-add ~/.ssh/id_rsa

@@ -18,7 +18,6 @@ export PATH=/usr/local/bin:$PATH
 # ecryptfs-mount-private
 
 export PYTHONPATH="$DRL_DIR:$PYTHONPATH"
-export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/Users/josephz/.mujoco/mjpro150/bin
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
