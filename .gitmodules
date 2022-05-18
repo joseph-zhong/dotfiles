@@ -1,6 +1,3 @@
 [submodule ".private_aliases"]
 	path = .private_aliases
 	url = git@github.com:joseph-zhong/.private_aliases.git
-[submodule ".fzf"]
-	path = .fzf
-	url = git@github.com:joseph-zhong/fzf.git
