@@ -36,7 +36,8 @@ printf 'creating symblink for my_configs.vim\n'
 ln -sf ~/dotfiles/my_configs.vim ~/.vim_runtime/
 
 printf 'installing fzf...\n'
-cd .fzf && ./install
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 
 echo
 echo "Done updating dotfiles... Please run \`source .bashrc\`"
