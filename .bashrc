@@ -1,6 +1,6 @@
 # bashrc
 
-### 
+###
 # Temporary
 ###
 # Supress bash deprecation warning: https://support.apple.com/en-us/HT208050
@@ -21,12 +21,191 @@ source ~/.bash_git
 export GIT_PS1_SHOWDIRTYSTATE=1
 
 # hg.
-function parse_hg_dirty {
-  [[ $( hg status 2> /dev/null ) != "" ]] && echo "*" 
+_find_most_relevant() {
+    # We don't want to output all remote bookmarks because there can be many
+    # of them. This function finds the most relevant remote bookmark using this
+    # algorithm:
+    # 1. If 'master' or '@' bookmark is available then output it
+    # 2. Sort remote bookmarks and output the first in reverse sorted order (
+    # it's a heuristic that tries to find the newest bookmark. It will work well
+    # with bookmarks like 'release20160926' and 'release20161010').
+    relevantbook="$(command grep -m1 -E -o "^[^/]+/(master|@)$" <<< "$1")"
+    if [[ -n $relevantbook ]]; then
+        builtin echo $relevantbook
+        return 0
+    fi
+
+    builtin echo "$(command sort -r <<< "$1" | command head -n 1)"
 }
-function parse_hg_branch {
-  [[ $( hg status 2> /dev/null ) != "" ]] && \
-      hg bookmark | grep '*' | cut -d ' ' -f3 2> /dev/null | sed -e "s/\(.*\)/[\1$(parse_hg_dirty)]/"
+
+
+_git_dirty() {
+  # cf. git contrib/completion/git-prompt.sh
+  if [ -n "${SHOW_DIRTY_STATE}" ] &&
+     [ "$(git config --bool shell.showDirtyState)" != "false" ]; then
+       command git diff --no-ext-diff --quiet || w="*"
+       command git diff --no-ext-diff --cached --quiet || i="+"
+       builtin printf "%s" "$w$i"
+  fi
+}
+
+_git_prompt() {
+  local git br
+  git="$1"
+  if [[ -f "$git" ]]; then
+      git=$(awk '/^gitdir:/ {print $2}' < "$git")
+  fi
+  if [[ -f "$git/HEAD" ]]; then
+    read br < "$git/HEAD"
+    case $br in
+      ref:\ refs/heads/*) br=${br#ref: refs/heads/} ;;
+      *) br="$(builtin echo "$br" | command cut -c 1-8)" ;;
+    esac
+    if [[ -f "$git/rebase-merge/interactive" ]]; then
+      b="$(command cat "$git/rebase-merge/head-name")"
+      b="${b#refs/heads/}"
+      br="$br|REBASE-i|$b"
+    elif [[ -d "$git/rebase-merge" ]]; then
+      b="$(command cat "$git/rebase-merge/head-name")"
+      b="${b#refs/heads/}"
+      br="$br|REBASE-m|$b"
+    else
+      if [[ -d "$git/rebase-apply" ]]; then
+        if [[ -f "$git/rebase-apply/rebasing" ]]; then
+          b="$(command cat "$git/rebase-apply/head-name")"
+          b="${b#refs/heads/}"
+          br="$br|REBASE|$b"
+        elif [[ -f "$git/rebase-apply/applying" ]]; then
+          br="$br|AM"
+        else
+          br="$br|AM/REBASE"
+        fi
+      elif [[ -f "$git/CHERRY_PICK_HEAD" ]]; then
+        br="$br|CHERRY-PICKING"
+      elif [[ -f "$git/REVERT_HEAD" ]]; then
+        br="$br|REVERTING"
+      elif [[ -f "$git/MERGE_HEAD" ]]; then
+        br="$br|MERGE"
+      elif [[ -f "$git/BISECT_LOG" ]]; then
+        br="$br|BISECT"
+      fi
+    fi
+  fi
+  br="$br$(_git_dirty)"
+  builtin printf "%s" "$br"
+}
+
+_hg_prompt() {
+  local hg br extra
+  hg="$1"
+
+  if [[ -f "$hg/bisect.state" ]]; then
+    extra="|BISECT"
+  elif [[ -f "$hg/histedit-state" ]]; then
+    extra="|HISTEDIT"
+  elif [[ -f "$hg/graftstate" ]]; then
+    extra="|GRAFT"
+  elif [[ -f "$hg/unshelverebasestate" ]]; then
+    extra="|UNSHELVE"
+  elif [[ -f "$hg/rebasestate" ]]; then
+    extra="|REBASE"
+  elif [[ -d "$hg/merge" ]]; then
+    extra="|MERGE"
+  elif [[ -L "$hg/store/lock" ]]; then
+    extra="|STORE-LOCKED"
+  elif [[ -L "$hg/wlock" ]]; then
+    extra="|WDIR-LOCKED"
+  fi
+
+  local dirstate="$( \
+    ( [[ -f "$hg/dirstate" ]] && \
+    command hexdump -vn 20 -e '1/1 "%02x"' "$hg/dirstate") || \
+    builtin echo "")"
+
+  local shared_hg="$hg"
+  if [[ -f "$hg/sharedpath" ]]; then
+    shared_hg="$(command cat $hg/sharedpath)"
+  fi
+  local remote="$shared_hg/store/remotenames"
+
+  local active="$hg/bookmarks.current"
+  if  [[ -f "$active" ]]; then
+    br="$(command cat "$active")"
+    # check to see if active bookmark needs update (eg, moved after pull)
+    local marks="$shared_hg/store/bookmarks"
+    if [[ -z "$extra" ]] && [[ -f "$marks" ]]; then
+      local markstate="$(command grep " $br$" "$marks" | \
+        command cut -f 1 -d ' ')"
+      if [[ $markstate != "$dirstate" ]]; then
+        extra="|UPDATE_NEEDED"
+      fi
+    fi
+  else
+    br="$(builtin echo "$dirstate" | command cut -c 1-9)"
+  fi
+  if [[ -f "$remote" ]]; then
+    local allremotemarks="$(command grep "^$dirstate bookmarks" "$remote" | \
+      command cut -f 3 -d ' ')"
+
+    if [[ -n "$allremotemarks" ]]; then
+        local remotemark="$(_find_most_relevant "$allremotemarks")"
+        if [[ -n "$remotemark" ]]; then
+          br="$br|$remotemark"
+          if [[ "$remotemark" != "$allremotemarks" ]]; then
+            # if there is more than one, let the user know with an elipsis
+            br="${br}..."
+          fi
+        fi
+    fi
+  fi
+  local branch
+  if [[ -f "$hg/branch" ]]; then
+    branch="$(command cat "$hg/branch")"
+    if [[ "$branch" != "default" ]]; then
+      br="$br|$branch"
+    fi
+  fi
+  br="$br$extra$(_hg_dirty)"
+  builtin printf "%s" "$br"
+}
+
+# cf. https://www.internalfb.com/intern/qa/4964/how-do-i-show-the-mercurial-bookmarkgit-branch-in?answerID=540621130023036
+_hg_dirty() {
+  if [ -n "${SHOW_DIRTY_STATE}" ] &&
+     [ "$(hg config shell.showDirtyState)" != "false" ]; then
+    command hg status 2> /dev/null \
+    | command awk '$1 == "?" { print "?" } $1 != "?" { print "*" }' \
+    | command sort | command uniq | command head -c1
+  fi
+}
+
+_scm_prompt() {
+  local dir fmt br
+  # Default to be compatable with __git_ps1. In particular:
+  # - provide a space for the user so that they don't have to have
+  #   random extra spaces in their prompt when not in a repo
+  fmt="${1:- (%s)}"
+
+  # find out if we're in a git or hg repo by looking for the control dir
+  dir="$PWD"
+  while : ; do
+    [[ -n "$HOME_IS_NOT_A_REPO" ]] && [[ "$dir" = "/home" ]] && break
+    if [[ -r "$dir/.git" ]]; then
+      br="$(_git_prompt "$dir/.git")"
+      # br="$(__git_ps1)"
+      break
+    elif [[ -d "$dir/.hg" ]]; then
+      br="$(_hg_prompt "$dir/.hg")"
+      break
+    fi
+    [[ "$dir" = "/" ]] && break
+    # portable "realpath" equivalent
+    dir="$(builtin cd -P "$dir/.." && builtin echo "$PWD")"
+  done
+
+  if [[ -n "$br" ]]; then
+    builtin printf "$fmt" "$br"
+  fi
 }
 
 # If not running interactively, don't do anything.
@@ -59,7 +238,8 @@ fi
 
 # Get repo info
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[00;34m\]\w\[\033[00m\]$(parse_hg_branch " \[\033[01;92m\][%s]")$(__git_ps1 " \[\033[01;92m\][%s]")\[\033[00m\]\$ '
+    # TODO: Make this way easier to read for future developer :(
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[00;34m\]\w\[\033[00m\]$(_scm_prompt " \[\033[01;92m\][%s]")\[\033[00m\]\$ '
     PS2="> "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -89,7 +269,7 @@ fi
 
 
 ####
-# Bash completion 
+# Bash completion
 ####
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -98,7 +278,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-if [[ `uname` == 'Darwin' ]]; then 
+if [[ `uname` == 'Darwin' ]]; then
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
       . $(brew --prefix)/etc/bash_completion
   fi
@@ -158,18 +338,18 @@ export GOOGLE_DRIVE=/Volumes/GoogleDrive
 export PAPERS=$GOOGLE_DRIVE/Papers
 export UNIVERSITY=$GOOGLE_DRIVE/University
 export UW_DIR=$UNIVERSITY/UW
-export SCHOOL=$UW_DIR/2018-19 
+export SCHOOL=$UW_DIR/2018-19
 
 ### CSE.
 if [[ `hostname` == *'.cs.washington.edu' ]]; then
   CSE=/cse/web/
   JOSEPHZ=$CSE/homes/josephz
-fi 
+fi
 export DRL_DIR=$UW_DIR/CSE599G1/hw/drl_hw1
 export PYTHONPATH="$DRL_DIR:$PYTHONPATH"
 
 ### Misc Projects.
-export PYTHONPATH="~/GoogleDrive/University/UW/2018-19/CSE481I/singing-style-transfer:$PYTHONPATH" 
+export PYTHONPATH="~/GoogleDrive/University/UW/2018-19/CSE481I/singing-style-transfer:$PYTHONPATH"
 export PYTHONPATH="~/ws/git/VideoSummarization:$PYTHONPATH"
 
 ### GRAIL.
@@ -207,9 +387,9 @@ if [[ -f /opt/ros/kinetic/setup.bash ]]; then
   export PYTHONPATH=$PYTHONPATH:~/Dropbox/UW/CSE490R/labs/src/lab3/src
   # export ROS_MASTER_URI=http://10.42.0.1:11311
   # export ROS_IP=10.42.0.196
-  
+
   source /opt/ros/kinetic/setup.bash
-  source $ROS/devel/setup.bash 
+  source $ROS/devel/setup.bash
 fi
 
 # History
@@ -238,12 +418,12 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.yarn/bin:$PATH"
 
 # Torch install.
-if [ -f  ~/torch/install/bin/torch-activate ]; then 
+if [ -f  ~/torch/install/bin/torch-activate ]; then
   export PATH="~/torch/install/bin:$PATH"
   source ~/torch/install/bin/torch-activate
 fi
 
-# CUDA 
+# CUDA
 export CUDA_HOME=/usr/local/cuda
 export PATH=$CUDA_HOME/bin:$PATH
 
@@ -256,8 +436,8 @@ export PATH=$PATH:/usr/local/mysql/bin
 # Caffe
 export PYTHONPATH=$HOME/caffe/python:$PYTHONPATH
 
-# OpenPose 
-export OPENPOSE_ROOT=/usr/local/openpose 
+# OpenPose
+export OPENPOSE_ROOT=/usr/local/openpose
 export PATH=$OPENPOSE_ROOT/build/examples/openpose:$PATH
 
 ### PyOpenPose Python Wrapper
@@ -286,7 +466,7 @@ export PATH="$PATH:/usr/lib/xorg"
 ###
 
 # Keras Backend.
-KERAS_BACKEND=theano 
+KERAS_BACKEND=theano
 export CPATH=$CPATH:~/.local/include
 export LIBRARY_PATH=$LIBRARY_PATH:~/.local/lib
 
