@@ -32,6 +32,7 @@ alias gdif='git difftool -t meld -d'
 alias gs="~/.sh_utils/git_awesome_status.py"
 alias mine="git log --format=short --author='Zhong'"
 alias author_of_all_time='git log | grep Author | hist_common.py'
+alias fix-lfs="git lfs uninstall && git reset  && git lfs install"
 
 ###
 # CMake

@@ -329,6 +329,7 @@ export PYTHONPATH="${PYTHONPATH}:$WSD/git/ml/personal/jzhong/experiments/2018/py
 # Brew
 if [[ `uname` == 'Darwin' ]]; then
   export PATH="/usr/local/opt/gettext/bin:$PATH"
+  export PATH="$HOME/homebrew/bin:$HOME/homebrew/sbin:$PATH"
 fi
 
 # Development Directories
@@ -524,3 +525,6 @@ unset __conda_setup
 ALL_PROXY=fwdproxy:8080
 eval $(ssh-agent)
 ssh-add ~/.ssh/id_rsa
+source <(kubectl completion bash)
+complete -o default -F __start_kubectl k
+complete -o default -F __start_kubectl ka
